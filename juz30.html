@@ -1,0 +1,4212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('img/bg.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            font-family: 'Arial', sans-serif;
+            background-color: #fef6bf;
+        }
+        .sidebar {
+            width: 300px;
+            background-color: #a9bd83;
+            color: white;
+            min-height: 100vh;
+            padding: 1rem;
+            transition: all 0.3s;
+            box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #fef6bf;
+        }
+
+        .card-header {
+            background-color: #fef6bf;
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #264653;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            background-color: #a9bd83;
+        }
+        .navbar-brand {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            color: white;
+        }
+        .btn-outline-secondary {
+            color: #264653;
+            border-color: #264653;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #264653;
+            color: white;
+        }
+        /* Islamic pattern background */
+        .container-fluid {
+            background-image: url('https://www.w3schools.com/w3images/geometry.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+            background-image: url('darkbg.jpg'); 
+        }
+        .dark-mode .card, .dark-mode .footer, .dark-mode .navbar, .dark-mode .sidebar {
+            background-color: #1c1c1c;
+        }
+        .dark-mode .card-header {
+            background-color: #2c2c2c;
+        }
+        .dark-mode .btn-outline-secondary {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        .dark-mode .btn-outline-secondary:hover {
+            background-color: #ffffff;
+            color: #121212;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none; /* Hide sidebar by default on smaller screens */
+            }
+            .sidebar.active {
+                display: block; /* Show sidebar when active */
+            }
+            .container-fluid {
+                padding: 1rem;
+            }
+            .d-md-none {
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="sidebar flex-shrink-0">
+            <header class="text-center mb-4">
+                <h3>Home</h3>
+            </header>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="home.html">
+                        <i class="fa-solid fa-kaaba"></i> Sholat Wajib
+                    </a>
+                </li>    
+                <li>
+                    <a href="sunnah.html">
+                        <i class="fas fa-mosque"> </i> Sholat Sunnah
+                    </a>
+                </li>        
+                <li>
+                    <a href="ibadahtracker.html">
+                        <i class="fa-solid fa-book-quran"></i> Ibadah Tracker
+                    </a>
+                </li> 
+                <li>
+                    <a href="quote.html">
+                        <i class="fa-solid fa-quote-right"></i> Quotes Islami
+                    </a>
+                </li>                 
+                <li>
+                    <a href="about.html">
+                        <i class="fa-solid fa-address-card"></i> About Us
+                    </a>
+                </li>        
+            
+            </ul>
+            <div class="mt-auto text-center">
+                <button class="btn  btn-sm"><a href="index.html" class="text-white text-decoration-none">Logout</a></button>
+            </div>
+            
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid p-4">
+            <header class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-outline-secondary d-md-none" onclick="toggleSidebar()">☰</button>
+                <h1>Surat-Surat Pendek</h1>
+                <button id="darkModeToggle" class="btn btn-dark">Dark Mode</button>
+            </header>
+
+            <!-- Card for Book Details -->
+            <div class=" row-cols-lg-1">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Membaca Surat An-Nas</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Ayat 1 -->
+                        <h2 class="text-end"><strong>قُلْ اَعُوْذُ بِرَبِّ النَّاسِۙ ۝١</strong></h2>
+                        <br>
+                        <p><strong>Latin:</strong> qul a‘ûdzu birabbin-nâs</p>
+                        <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), 'Aku berlindung kepada Tuhan manusia,'</p>
+                        <br>
+
+                        <!-- Ayat 2 -->
+                        <h2 class="text-end"><strong>مَلِكِ النَّاسِۙ ۝٢</strong></h2>
+                        <br>
+                        <p><strong>Latin:</strong> malikin-nâs</p>
+                        <p><strong>Artinya:</strong> "raja manusia,</p>
+                        <br>
+
+                        <!-- Ayat 3 -->
+                        <h2 class="text-end"><strong>اِلٰهِ النَّاسِۙ ۝٣</strong></h2>
+                        <br>
+                        <p><strong>Latin:</strong> ilâhin-nâs</p>
+                        <p><strong>Artinya:</strong> "sembahan manusia"</p>
+                        <br>
+
+                        <!-- Ayat 4 -->
+                        <h2 class="text-end"><strong>مِنْ شَرِّ الْوَسْوَاسِ ەۙ الْخَنَّاسِۖ ۝٤</strong></h2>
+                        <br>
+                        <p><strong>Latin:</strong> min syarril-waswâsil-khannâs</p>
+                        <p><strong>Artinya:</strong> "dari kejahatan (setan) pembisik yang bersembunyi"</p>
+                        <br>
+
+                        <!-- Ayat 5 -->
+                        <h2 class="text-end"><strong>الَّذِيْ يُوَسْوِسُ فِيْ صُدُوْرِ النَّاسِۙ ۝٥</strong></h2>
+                        <br>
+                        <p><strong>Latin:</strong> alladzî yuwaswisu fî shudûrin-nâs</p>
+                        <p><strong>Artinya:</strong> "yang membisikkan (kejahatan) ke dalam dada manusia,</p>
+                        <br>
+
+                        <!-- Ayat 6 -->
+                        <h2 class="text-end"><strong>مِنَ الْجِنَّةِ وَالنَّاسِࣖ ۝٦</strong></h2>
+                        <br>
+                        <p><strong>Latin:</strong> minal-jinnati wan-nâs</p>
+                        <p><strong>Artinya:</strong> "dari (golongan) jin dan manusia."</p>
+                        <br>
+    
+                    </div>
+                </div>
+     
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Membaca Surat Al-Falaq</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Ayat 1 -->
+                    <h2 class="text-end"><strong>قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ ۝١</strong></h2>
+                    <br>
+                    <p><strong>Latin:</strong> qul a‘ûdzu birabbil-falaq</p>
+                    <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), 'Aku berlindung kepada Tuhan yang (menjaga) fajar (subuh),"</p>
+                    <br>
+
+                    <!-- Ayat 2 -->
+                    <h2 class="text-end"><strong>مِنْ شَرِّ مَا خَلَقَۙ ۝٢</strong></h2>
+                    <br>
+                    <p><strong>Latin:</strong> min syarri mâ khalaq</p>
+                    <p><strong>Artinya:</strong> "dari kejahatan (makhluk yang) Dia ciptakan,</p>
+                    <br>
+
+                    <!-- Ayat 3 -->
+                    <h2 class="text-end"><strong>وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ ۝٣</strong></h2>
+                    <br>
+                    <p><strong>Latin:</strong> wa min syarri ghâsiqin idzâ waqab</p>
+                    <p><strong>Artinya:</strong> "dari kejahatan malam apabila telah gelap gulita,</p>
+                    <br>
+
+                    <!-- Ayat 4 -->
+                    <h2 class="text-end"><strong>وَمِنْ شَرِّ النَّفّٰثٰتِ فِى الْعُقَدِۙ ۝٤</strong></h2>
+                    <br>
+                    <p><strong>Latin:</strong> wa min syarrin-naffâtsâti fil-‘uqad</p>
+                    <p><strong>Artinya:</strong> "dari kejahatan perempuan-perempuan (penyihir) yang meniup pada buhul-buhul (talinya),</p>
+                    <br>
+
+                    <!-- Ayat 5 -->
+                    <h2 class="text-end"><strong>وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَࣖ ۝٥</strong></h2>
+                    <br>
+                    <p><strong>Latin:</strong> wa min syarri ḫâsidin idzâ ḫasad</p>
+                    <p><strong>Artinya:</strong> "dan dari kejahatan orang yang dengki apabila dia dengki."</p>
+                    <br>
+                </div>
+            </div>
+
+            <!-- Surat Al-Ikhlas -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Ikhlas</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>قُلْ هُوَ اللّٰهُ اَحَدٌۚ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> qul huwallâhu aḫad</p>
+        <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), 'Dialah Allah Yang Maha Esa.'</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>اَللّٰهُ الصَّمَدُۚ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> allâhush-shamad</p>
+        <p><strong>Artinya:</strong> "Allah tempat meminta segala sesuatu.</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>لَمْ يَلِدْ وَلَمْ يُوْلَدْۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lam yalid wa lam yûlad</p>
+        <p><strong>Artinya:</strong> "Dia tidak beranak dan tidak pula diperanakkan.</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَلَمْ يَكُنْ لَّهٗ كُفُوًا اَحَدٌࣖ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lam yakul lahû kufuwan aḫad</p>
+        <p><strong>Artinya:</strong> "serta tidak ada sesuatu pun yang setara dengan-Nya."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Lahab -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Lahab</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>تَبَّتْ يَدَآ اَبِيْ لَهَبٍ وَّتَبَّۗ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tabbat yadâ abî lahabiw wa tabb</p>
+        <p><strong>Artinya:</strong> "Binasalah kedua tangan Abu Lahab dan benar-benar binasa dia."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>مَآ اَغْنٰى عَنْهُ مَالُهٗ وَمَا كَسَبَۗ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> mâ aghnâ ‘an-hu mâluhû wa mâ kasab</p>
+        <p><strong>Artinya:</strong> "Tidaklah berguna baginya hartanya dan apa yang dia usahakan."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>سَيَصْلٰى نَارًا ذَاتَ لَهَبٍۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> sayashlâ nâran dzâta lahab</p>
+        <p><strong>Artinya:</strong> "Kelak dia akan memasuki api yang bergejolak (neraka),"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَّامْرَاَتُهٗۗ حَمَّالَةَ الْحَطَبِۚ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wamra'atuh, ḫammâlatal-ḫathab</p>
+        <p><strong>Artinya:</strong> "(begitu pula) istrinya, pembawa kayu bakar (penyebar fitnah)."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فِيْ جِيْدِهَا حَبْلٌ مِّنْ مَّسَدٍࣖ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fî jîdihâ ḫablum mim masad</p>
+        <p><strong>Artinya:</strong> "Di lehernya ada tali dari sabut yang dipintal."</p>
+    </div>
+</div>
+
+<!-- Surat An-Nashr -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat An-Nashr</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اِذَا جَاۤءَ نَصْرُ اللّٰهِ وَالْفَتْحُۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzâ jâ'a nashrullâhi wal-fat-ḫ</p>
+        <p><strong>Artinya:</strong> "Apabila telah datang pertolongan Allah dan kemenangan."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَرَاَيْتَ النَّاسَ يَدْخُلُوْنَ فِيْ دِيْنِ اللّٰهِ اَفْوَاجًاۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ra'aitan-nâsa yadkhulûna fî dînillâhi afwâjâ</p>
+        <p><strong>Artinya:</strong> "Dan engkau melihat manusia berbondong-bondong masuk agama Allah."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُۗ اِنَّهٗ كَانَ تَوَّابًاࣖ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa sabbiḫ biḫamdi rabbika wastaghfir-h, innahû kâna tawwâbâ</p>
+        <p><strong>Artinya:</strong> "Bertasbihlah dengan memuji Tuhanmu dan mohonlah ampun kepada-Nya. Sesungguhnya Dia Maha Penerima tobat."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Kafirun -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Kafirun</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>قُلْ يٰٓاَيُّهَا الْكٰفِرُوْنَۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> qul yâ ayyuhal-kâfirûn</p>
+        <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), “Wahai orang-orang kafir,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>لَآ اَعْبُدُ مَا تَعْبُدُوْنَۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lâ a‘budu mâ ta‘budûn</p>
+        <p><strong>Artinya:</strong> "Aku tidak akan menyembah apa yang kamu sembah."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَلَآ اَنْتُمْ عٰبِدُوْنَ مَآ اَعْبُدُۚ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lâ antum ‘âbidûna mâ a‘bud</p>
+        <p><strong>Artinya:</strong> "Kamu juga bukan penyembah apa yang aku sembah."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَلَآ اَنَا۠ عَابِدٌ مَّا عَبَدْتُّمْۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lâ ana ‘âbidum mâ ‘abattum</p>
+        <p><strong>Artinya:</strong> "Aku juga tidak pernah menjadi penyembah apa yang kamu sembah."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَلَآ اَنْتُمْ عٰبِدُوْنَ مَآ اَعْبُدُۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lâ antum ‘âbidûna mâ a‘bud</p>
+        <p><strong>Artinya:</strong> "Kamu tidak pernah (pula) menjadi penyembah apa yang aku sembah."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>لَكُمْ دِيْنُكُمْ وَلِيَ دِيْنِࣖ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lakum dînukum wa liya dîn</p>
+        <p><strong>Artinya:</strong> "Untukmu agamamu dan untukku agamaku.”</p>
+    </div>
+</div>
+
+<!-- Surat Al-Kautsar -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Kautsar</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اِنَّآ اَعْطَيْنٰكَ الْكَوْثَرَۗ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innâ a‘thainâkal-kautsar</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Kami telah memberimu (Nabi Muhammad) nikmat yang banyak."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>فَصَلِّ لِرَبِّكَ وَانْحَرْۗ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa shalli lirabbika wan-ḫar</p>
+        <p><strong>Artinya:</strong> "Maka, laksanakanlah salat karena Tuhanmu dan berkurbanlah!"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>اِنَّ شَانِئَكَ هُوَ الْاَبْتَرُࣖ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna syâni'aka huwal-abtar</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya orang yang membencimu, dialah yang terputus (dari rahmat Allah)."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Ma'un -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Ma'un</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اَرَءَيْتَ الَّذِيْ يُكَذِّبُ بِالدِّيْنِۗ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a ra'aitalladzî yukadzdzibu bid-dîn</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu (orang) yang mendustakan agama?"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>فَذٰلِكَ الَّذِيْ يَدُعُّ الْيَتِيْمَۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa dzâlikalladzî yadu‘‘ul-yatîm</p>
+        <p><strong>Artinya:</strong> "Itulah orang yang menghardik anak yatim"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَلَا يَحُضُّ عَلٰى طَعَامِ الْمِسْكِيْنِۗ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lâ yaḫudldlu ‘alâ tha‘âmil-miskîn</p>
+        <p><strong>Artinya:</strong> "dan tidak menganjurkan untuk memberi makan orang miskin."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>فَوَيْلٌ لِّلْمُصَلِّيْنَۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa wailul lil-mushallîn</p>
+        <p><strong>Artinya:</strong> "Celakalah orang-orang yang melaksanakan salat,"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>الَّذِيْنَ هُمْ عَنْ صَلَاتِهِمْ سَاهُوْنَۙ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzîna hum ‘an shalâtihim sâhûn</p>
+        <p><strong>Artinya:</strong> "(yaitu) yang lalai terhadap salatnya,"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>الَّذِيْنَ هُمْ يُرَاۤءُوْنَۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzîna hum yurâ'ûn</p>
+        <p><strong>Artinya:</strong> "yang berbuat riya,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَيَمْنَعُوْنَ الْمَاعُوْنَࣖ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa yamna‘ûnal-mâ‘ûn</p>
+        <p><strong>Artinya:</strong> "dan enggan (memberi) bantuan."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Quraisy -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Quraisy</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>لِاِيْلٰفِ قُرَيْشٍۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> li'îlâfi quraîsy</p>
+        <p><strong>Artinya:</strong> "Disebabkan oleh kebiasaan orang-orang Quraisy,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>اٖلٰفِهِمْ رِحْلَةَ الشِّتَاۤءِ وَالصَّيْفِۚ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> îlâfihim riḫlatasy-syitâ'i wash-shaîf</p>
+        <p><strong>Artinya:</strong> "(yaitu) kebiasaan mereka bepergian pada musim dingin dan musim panas (sehingga mendapatkan banyak keuntungan),"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>فَلْيَعْبُدُوْا رَبَّ هٰذَا الْبَيْتِۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> falya‘budû rabba hâdzal-baît</p>
+        <p><strong>Artinya:</strong> "maka hendaklah mereka menyembah Tuhan (pemilik) rumah ini (Ka‘bah)"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>الَّذِيْٓ اَطْعَمَهُمْ مِّنْ جُوْعٍ ەۙ وَّاٰمَنَهُمْ مِّنْ خَوْفٍࣖ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî ath‘amahum min jû‘iw wa âmanahum min khaûf</p>
+        <p><strong>Artinya:</strong> "yang telah memberi mereka makanan untuk menghilangkan lapar dan mengamankan mereka dari rasa takut."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Fil -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Fil</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِاَصْحٰبِ الْفِيْلِۗ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam tara kaifa fa‘ala rabbuka bi'ash-ḫâbil-fîl</p>
+        <p><strong>Artinya:</strong> "Tidakkah engkau (Nabi Muhammad) memperhatikan bagaimana Tuhanmu telah bertindak terhadap pasukan bergajah?"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>اَلَمْ يَجْعَلْ كَيْدَهُمْ فِيْ تَضْلِيْلٍۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam yaj‘al kaidahum fî tadllîl</p>
+        <p><strong>Artinya:</strong> "Bukankah Dia telah menjadikan tipu daya mereka itu sia-sia?"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَّاَرْسَلَ عَلَيْهِمْ طَيْرًا اَبَابِيْلَۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa arsala ‘alaihim thairan abâbîl</p>
+        <p><strong>Artinya:</strong> "Dia mengirimkan kepada mereka burung yang berbondong-bondong"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>تَرْمِيْهِمْ بِحِجَارَةٍ مِّنْ سِجِّيْلٍۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tarmîhim biḫijâratim min sijjîl</p>
+        <p><strong>Artinya:</strong> "yang melempari mereka dengan batu dari tanah liat yang dibakar,"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُوْلٍࣖ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ja‘alahum ka‘ashfim ma'kûl</p>
+        <p><strong>Artinya:</strong> "sehingga Dia menjadikan mereka seperti daun-daun yang dimakan (ulat)."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Humazah -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Humazah</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wailul likulli humazatil lumazah</p>
+        <p><strong>Artinya:</strong> "Celakalah setiap pengumpat lagi pencela."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>الَّذِيْ جَمَعَ مَالًا وَّعَدَّدَهٗۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî jama‘a mâlaw wa ‘addadah</p>
+        <p><strong>Artinya:</strong> "yang mengumpulkan harta dan menghitung-hitungnya."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>يَحْسَبُ اَنَّ مَالَهٗٓ اَخْلَدَهٗۚ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yaḫsabu anna mâlahû akhladah</p>
+        <p><strong>Artinya:</strong> "Dia (manusia) mengira bahwa hartanya dapat mengekalkannya."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>كَلَّا لَيُنْۢبَذَنَّ فِى الْحُطَمَةِۖ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ layumbadzanna fil-ḫuthamah</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Pasti dia akan dilemparkan ke dalam (neraka) Hutamah."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا الْحُطَمَةُۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mal-ḫuthamah</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu apakah (neraka) Hutamah?"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>نَارُ اللّٰهِ الْمُوْقَدَةُۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> nârullâhil-mûqadah</p>
+        <p><strong>Artinya:</strong> "(Ia adalah) api (azab) Allah yang dinyalakan."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>الَّتِيْ تَطَّلِعُ عَلَى الْاَفْـِٕدَةِۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> allatî taththali‘u ‘alal-af'idah</p>
+        <p><strong>Artinya:</strong> "yang (membakar) naik sampai ke hati."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>اِنَّهَا عَلَيْهِمْ مُّؤْصَدَةٌۙ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahâ ‘alaihim mu'shadah</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya dia (api itu) tertutup rapat (sebagai hukuman) atas mereka,"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>فِيْ عَمَدٍ مُّمَدَّدَةٍࣖ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fî ‘amadim mumaddadah</p>
+        <p><strong>Artinya:</strong> "(sedangkan mereka) diikat pada tiang-tiang yang panjang."</p>
+    </div>
+</div>
+
+<!-- Surat Al-‘Ashr -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-‘Ashr</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالْعَصْرِۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-‘ashr</p>
+        <p><strong>Artinya:</strong> "Demi masa,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>اِنَّ الْاِنْسَانَ لَفِيْ خُسْرٍۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innal-insâna lafî khusr</p>
+        <p><strong>Artinya:</strong> "sesungguhnya manusia benar-benar berada dalam kerugian,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>اِلَّا الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ وَتَوَاصَوْا بِالْحَقِّ ەۙ وَتَوَاصَوْا بِالصَّبْرِࣖ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> illalladzîna âmanû wa ‘amilush-shâliḫâti wa tawâshau bil-ḫaqqi wa tawâshau bish-shabr</p>
+        <p><strong>Artinya:</strong> "kecuali orang-orang yang beriman dan beramal saleh serta saling menasihati untuk kebenaran dan kesabaran."</p>
+    </div>
+</div>
+
+<!-- Surat At-Takatsur -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat At-Takatsur</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اَلْهٰىكُمُ التَّكَاثُرُۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> al-hâkumut-takâtsur</p>
+        <p><strong>Artinya:</strong> "Berbangga-bangga dalam memperbanyak (dunia) telah melalaikanmu"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>حَتّٰى زُرْتُمُ الْمَقَابِرَۗ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ḫattâ zurtumul-maqâbir</p>
+        <p><strong>Artinya:</strong> "sampai kamu masuk ke dalam kubur."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>كَلَّا سَوْفَ تَعْلَمُوْنَۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ saufa ta‘lamûn</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Kelak kamu akan mengetahui (akibat perbuatanmu itu)."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>ثُمَّ كَلَّا سَوْفَ تَعْلَمُوْنَ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma kallâ saufa ta‘lamûn</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak (jangan melakukan itu)! Kelak kamu akan mengetahui (akibatnya)."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>كَلَّا لَوْ تَعْلَمُوْنَ عِلْمَ الْيَقِيْنِۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ lau ta‘lamûna ‘ilmal-yaqîn</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak (jangan melakukan itu)! Sekiranya kamu mengetahui dengan pasti, (niscaya kamu tidak akan melakukannya)."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>لَتَرَوُنَّ الْجَحِيْمَۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> latarawunnal-jaḫîm</p>
+        <p><strong>Artinya:</strong> "Pasti kamu benar-benar akan melihat (neraka) Jahim."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>ثُمَّ لَتَرَوُنَّهَا عَيْنَ الْيَقِيْنِۙ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma latarawunnahâ ‘ainal-yaqîn</p>
+        <p><strong>Artinya:</strong> "Kemudian, kamu pasti benar-benar akan melihatnya dengan ainul-yaqin."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>ثُمَّ لَتُسْـَٔلُنَّ يَوْمَىِٕذٍ عَنِ النَّعِيْمِࣖ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma latus'alunna yauma'idzin ‘anin-na‘îm</p>
+        <p><strong>Artinya:</strong> "Kemudian, kamu pasti benar-benar akan ditanya pada hari itu tentang kenikmatan (yang megah di dunia itu)."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Qari'ah -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Qari'ah</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اَلْقَارِعَةُۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> al-qâri‘ah</p>
+        <p><strong>Artinya:</strong> "Al-Qāri‘ah (hari Kiamat yang menggetarkan)."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>مَا الْقَارِعَةُۚ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> mal-qâri‘ah</p>
+        <p><strong>Artinya:</strong> "Apakah al-Qāri‘ah itu?"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا الْقَارِعَةُۗ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mal-qâri‘ah</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu apakah al-Qāri‘ah itu?"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>يَوْمَ يَكُوْنُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوْثِۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma yakûnun-nâsu kal-farâsyil-mabtsûts</p>
+        <p><strong>Artinya:</strong> "Pada hari itu manusia seperti laron yang beterbangan"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَتَكُوْنُ الْجِبَالُ كَالْعِهْنِ الْمَنْفُوْشِۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa takûnul-jibâlu kal-‘ihnil-manfûsy</p>
+        <p><strong>Artinya:</strong> "dan gunung-gunung seperti bulu yang berhamburan."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>فَاَمَّا مَنْ ثَقُلَتْ مَوَازِينُهٗۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ammâ man tsaqulat mawâzînuh</p>
+        <p><strong>Artinya:</strong> "Siapa yang berat timbangan (kebaikan)-nya,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>فَهُوَ فِيْ عِيْشَةٍ رَّاضِيَةٍۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa huwa fî ‘îsyatir râdliyah</p>
+        <p><strong>Artinya:</strong> "dia berada dalam kehidupan yang menyenangkan."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَاَمَّا مَنْ خَفَّتْ مَوَازِيْنُهٗۙ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammâ man khaffat mawâzînuh</p>
+        <p><strong>Artinya:</strong> "Adapun orang yang ringan timbangan (kebaikan)-nya,"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>فَاُمُّهٗ هَاوِيَةٌۗ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ummuhû hâwiyah</p>
+        <p><strong>Artinya:</strong> "tempat kembalinya adalah (neraka) Hawiyah."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا هِيَهْۗ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mâ hiyah</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu apakah (neraka Hawiyah) itu?"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>نَارٌ حَامِيَةٌࣖ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> nârun ḫâmiyah</p>
+        <p><strong>Artinya:</strong> "(Ia adalah) api yang sangat panas."</p>
+    </div>
+</div>
+
+<!-- Surat Al-‘Adiyat -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-‘Adiyat</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالْعٰدِيٰتِ ضَبْحًاۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-‘âdiyâti dlab-ḫâ</p>
+        <p><strong>Artinya:</strong> "Demi kuda-kuda perang yang berlari kencang terengah-engah,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>فَالْمُوْرِيٰتِ قَدْحًاۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fal-mûriyâti qad-ḫâ</p>
+        <p><strong>Artinya:</strong> "yang memercikkan bunga api (dengan entakan kakinya),"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>فَالْمُغِيْرٰتِ صُبْحًاۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fal-mughîrâti shub-ḫâ</p>
+        <p><strong>Artinya:</strong> "yang menyerang (dengan tiba-tiba) pada waktu pagi"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>فَاَثَرْنَ بِهٖ نَقْعًاۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa atsarna bihî naq‘â</p>
+        <p><strong>Artinya:</strong> "sehingga menerbangkan debu,"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَوَسَطْنَ بِهٖ جَمْعًاۙ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa wasathna bihî jam‘â</p>
+        <p><strong>Artinya:</strong> "lalu menyerbu ke tengah-tengah kumpulan musuh,"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>اِنَّ الْاِنْسَانَ لِرَبِّهٖ لَكَنُوْدٌۚ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innal-insâna lirabbihî lakanûd</p>
+        <p><strong>Artinya:</strong> "sesungguhnya manusia itu sangatlah ingkar kepada Tuhannya."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَاِنَّهٗ عَلٰى ذٰلِكَ لَشَهِيْدٌۚ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa innahû ‘alâ dzâlika lasyahîd</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya dia benar-benar menjadi saksi atas hal itu (keingkarannya)."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَاِنَّهٗ لِحُبِّ الْخَيْرِ لَشَدِيْدٌۗ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa innahû liḫubbil-khairi lasyadîd</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya cintanya pada harta benar-benar berlebihan."</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>۞ اَفَلَا يَعْلَمُ اِذَا بُعْثِرَ مَا فِى الْقُبُوْرِۙ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a fa lâ ya‘lamu idzâ bu‘tsira mâ fil-qubûr</p>
+        <p><strong>Artinya:</strong> "Maka, tidakkah dia mengetahui (apa yang akan dialaminya) apabila dikeluarkan apa yang ada di dalam kubur"</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَحُصِّلَ مَا فِى الصُّدُوْرِۙ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa hushshila mâ fish-shudûr</p>
+        <p><strong>Artinya:</strong> "dan ditampakkan apa yang tersimpan di dalam dada?"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>اِنَّ رَبَّهُمْ بِهِمْ يَوْمَىِٕذٍ لَّخَبِيْرٌࣖ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna rabbahum bihim yauma'idzil lakhabîr</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Tuhan mereka pada hari itu benar-benar Mahateliti terhadap (keadaan) mereka."</p>
+    </div>
+</div>
+
+<!-- Surat Az-Zalzalah -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Az-Zalzalah</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اِذَا زُلْزِلَتِ الْاَرْضُ زِلْزَالَهَاۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzâ zulzilatil-ardlu zilzâlahâ</p>
+        <p><strong>Artinya:</strong> "Apabila bumi diguncangkan dengan guncangan yang dahsyat,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَاَخْرَجَتِ الْاَرْضُ اَثْقَالَهَاۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa akhrajatil-ardlu atsqâlahâ</p>
+        <p><strong>Artinya:</strong> "bumi mengeluarkan isi perutnya,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَقَالَ الْاِنْسَانُ مَا لَهَاۚ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa qâlal-insânu mâ lahâ</p>
+        <p><strong>Artinya:</strong> "dan manusia bertanya, “Apa yang terjadi dengannya (bumi)?”</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>يَوْمَىِٕذٍ تُحَدِّثُ اَخْبَارَهَاۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma'idzin tuḫadditsu akhbârahâ</p>
+        <p><strong>Artinya:</strong> "Pada hari itu (bumi) menyampaikan berita (tentang apa yang diperbuat manusia di atasnya)"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>بِاَنَّ رَبَّكَ اَوْحٰى لَهَاۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> bi'anna rabbaka auḫâ lahâ</p>
+        <p><strong>Artinya:</strong> "karena sesungguhnya Tuhanmu telah memerintahkan (yang demikian itu) kepadanya."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>يَوْمَىِٕذٍ يَّصْدُرُ النَّاسُ اَشْتَاتًا ەۙ لِّيُرَوْا اَعْمَالَهُمْۗ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma'idziy yashdurun-nâsu asytâtal liyurau a‘mâlahum</p>
+        <p><strong>Artinya:</strong> "Pada hari itu manusia keluar (dari kuburnya) dalam keadaan terpencar untuk diperlihatkan kepada mereka (balasan) semua perbuatan mereka."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>فَمَنْ يَّعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَّرَهٗۚ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa may ya‘mal mitsqâla dzarratin khairay yarah</p>
+        <p><strong>Artinya:</strong> "Siapa yang mengerjakan kebaikan seberat zarah, dia akan melihat (balasan)-nya."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَمَنْ يَّعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَّرَهٗࣖ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa may ya‘mal mitsqâla dzarratin syarray yarah</p>
+        <p><strong>Artinya:</strong> "Siapa yang mengerjakan kejahatan seberat zarah, dia akan melihat (balasan)-nya."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Bayyinah -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Bayyinah</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>لَمْ يَكُنِ الَّذِينَ كَفَرُوا مِنْ أَهْلِ الْكِتَابِ وَالْمُشْرِكِينَ مُنْفَكِّينَ حَتَّى تَأْتِيَهُمُ الْبَيِّنَةُ ۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lam yakunilladzîna kafarû min ahlil-kitâbi wal-musyrikîna munfakkîna ḫattâ ta'tiyahumul-bayyinah</p>
+        <p><strong>Artinya:</strong> "Orang-orang yang kufur dari golongan Ahlulkitab dan orang-orang musyrik tidak akan meninggalkan (kekufuran mereka) sampai datang kepada mereka bukti yang nyata,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>رَسُولٌ مِّنَ اللَّهِ يَتْلُو صُحُفًا مُّطَهَّرَةً ۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> rasûlum minallâhi yatlû shuḫufam muthahharah</p>
+        <p><strong>Artinya:</strong> "(yaitu) seorang Rasul dari Allah (Nabi Muhammad) yang membacakan lembaran-lembaran suci (Al-Qur’an)"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>فِيهَا كُتُبٌ قَيِّمَةٌ ۗ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fîhâ kutubung qayyimah</p>
+        <p><strong>Artinya:</strong> "yang di dalamnya terdapat (isi) kitab-kitab yang lurus (benar)."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَمَا تَفَرَّقَ الَّذِينَ أُوتُوا الْكِتَابَ إِلَّا مِنْ بَعْدِ مَا جَاءَتْهُمُ الْبَيِّنَةُ ۗ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ tafarraqalladzîna ûtul-kitâba illâ mim ba‘di mâ jâ'at-humul-bayyinah</p>
+        <p><strong>Artinya:</strong> "Tidaklah terpecah-belah orang-orang Ahlulkitab, melainkan setelah datang kepada mereka bukti yang nyata."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَمَآ أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهِ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَآءَ وَيُقِيمُوا الصَّلَاةَ وَيُؤْتُوا الزَّكَاةَ وَذَٰلِكَ دِينُ الْقَيِّمَةِ ۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ umirû illâ liya‘budullâha mukhlishîna lahud-dîna ḫunafâ'a wa yuqîmush-shalâta wa yu'tuz-zakâta wa dzâlika dînul-qayyimah</p>
+        <p><strong>Artinya:</strong> "Mereka tidak diperintah, kecuali untuk menyembah Allah dengan mengikhlaskan ketaatan kepada-Nya lagi hanif (istikamah), melaksanakan salat, dan menunaikan zakat. Itulah agama yang lurus (benar)."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>إِنَّ الَّذِينَ كَفَرُوا مِنْ أَهْلِ الْكِتَابِ وَالْمُشْرِكِينَ فِي نَارِ جَهَنَّمَ خَالِدِينَ فِيهَا ۗ أُو۟لَٰٓئِكَ هُمْ شَرُّ الْبَرِيَّةِ ۗ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innalladzîna kafarû min ahlil-kitâbi wal-musyrikîna fî nâri jahannama khâlidîna fîhâ, ulâ'ika hum syarrul-bariyyah</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya orang-orang yang kufur dari golongan Ahlulkitab dan orang-orang musyrik (akan masuk) neraka Jahanam. Mereka kekal di dalamnya. Mereka itulah seburuk-buruk makhluk."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ أُو۟لَٰٓئِكَ هُمْ خَيْرُ الْبَرِيَّةِ ۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innalladzîna âmanû wa ‘amilush-shâliḫâti ulâ'ika hum khairul-bariyyah</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya orang-orang yang beriman dan mengerjakan kebajikan, mereka itulah sebaik-baik makhluk."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>جَزَاؤُهُمْ عِندَ رَبِّهِمْ جَنَّاتُ عَدْنٍ تَجْرِي مِنْ تَحْتِهَا الْأَنْهَارُ خَالِدِينَ فِيهَآ أَبَدًا ۗ رَضِيَ اللَّٰهُ عَنْهُمْ وَرَضُوا عَنْهُ ۗ ذَٰلِكَ لِمَنْ خَشِيَ رَبَّهُ ۖ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> jazâ'uhum ‘inda rabbihim jannâtu ‘adnin tajrî min taḫtihal-an-hâru khâlidîna fîhâ abadâ, radliyallâhu ‘an-hum wa radlû ‘an-h, dzâlika liman khasyiya rabbah</p>
+        <p><strong>Artinya:</strong> "Balasan mereka di sisi Tuhannya adalah surga ‘Adn yang mengalir di bawahnya sungai-sungai. Mereka kekal di dalamnya selama-lamanya. Allah rida terhadap mereka dan mereka pun rida kepada-Nya. Itu adalah (balasan) bagi orang yang takut kepada Tuhannya."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Qadr -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Qadr</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>إِنَّآ أَنْزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innâ anzalnâhu fî lailatil-qadr</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Kami telah menurunkannya (Al-Qur’an) pada Lailatulqadar."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَمَآ أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ ۗ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mâ lailatul-qadr</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu apakah Lailatulqadar itu?"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ ۗ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lailatul-qadri khairum min alfi syahr</p>
+        <p><strong>Artinya:</strong> "Lailatulqadar itu lebih baik daripada seribu bulan."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِمْ مِنْ كُلِّ أَمْرٍ ۛ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tanazzalul-malâ'ikatu war-rûḫu fîhâ bi'idzni rabbihim, ming kulli amr</p>
+        <p><strong>Artinya:</strong> "Pada malam itu turun para malaikat dan Rūḥ (Jibril) dengan izin Tuhannya untuk mengatur semua urusan."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>سَلاَمٌ هِيَ حَتَّى مَطْلَعِ الْفَجْرِ ۖ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> salâmun hiya ḫattâ mathla‘il-fajr</p>
+        <p><strong>Artinya:</strong> "Sejahteralah (malam) itu sampai terbit fajar."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Alaq -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Alaq</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>إِقْرَأْ بِاسْمِ رَبِّكَ الَّذِيْ خَلَقَ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> iqra' bismi rabbikalladzî khalaq</p>
+        <p><strong>Artinya:</strong> "Bacalah dengan (menyebut) nama Tuhanmu yang menciptakan!"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> khalaqal-insâna min ‘alaq</p>
+        <p><strong>Artinya:</strong> "Dia menciptakan manusia dari segumpal darah."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>إِقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> iqra' wa rabbukal-akram</p>
+        <p><strong>Artinya:</strong> "Bacalah! Tuhanmulah Yang Mahamulia,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>الَّذِيْ عَلَّمَ بِالْقَلَمِ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî ‘allama bil-qalam</p>
+        <p><strong>Artinya:</strong> "yang mengajar (manusia) dengan pena."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘allamal-insâna mâ lam ya‘lam</p>
+        <p><strong>Artinya:</strong> "Dia mengajarkan manusia apa yang tidak diketahuinya."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>كَلَّا إِنَّ الْإِنسَانَ لَيَطْغَىٰ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ innal-insâna layathghâ</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Sesungguhnya manusia itu benar-benar melampaui batas"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>أَنْ رَآهُ اسْتَغْنَىٰ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ar ra'âhustaghnâ</p>
+        <p><strong>Artinya:</strong> "ketika melihat dirinya serba berkecukupan."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>إِنَّ إِلَى رَبِّكَ الرُّجْعَىٰ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna ilâ rabbikar-ruj‘â</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya hanya kepada Tuhanmulah tempat kembali(-mu)."</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>أَرَأَيْتَ الَّذِي يَنْهَىٰ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a ra'aitalladzî yan-hâ</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu tentang orang yang melarang"</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>عَبْدًا إِذَا صَلَّىٰ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘abdan idzâ shallâ</p>
+        <p><strong>Artinya:</strong> "seorang hamba ketika dia melaksanakan salat?"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>أَرَأَيْتَ إِنْ كَانَ عَلَى الْهُدَىٰ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a ra'aita ing kâna ‘alal-hudâ</p>
+        <p><strong>Artinya:</strong> "Bagaimana pendapatmu kalau terbukti dia berada di dalam kebenaran"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>أَوْ أَمَرَ بِالتَّقْوَىٰ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> au amara bit-taqwâ</p>
+        <p><strong>Artinya:</strong> "atau dia menyuruh bertakwa (kepada Allah)?"</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>أَرَأَيْتَ إِنْ كَذَّبَ وَتَوَلَّىٰ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a ra'aita ing kadzdzaba wa tawallâ</p>
+        <p><strong>Artinya:</strong> "Bagaimana pendapatmu kalau dia mendustakan (kebenaran) dan berpaling (dari keimanan)?"</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>أَلَمْ يَعْلَمْ بِأَنَّ اللَّهَ يَرَىٰ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam ya‘lam bi'annallâha yarâ</p>
+        <p><strong>Artinya:</strong> "Tidakkah dia mengetahui bahwa sesungguhnya Allah melihat (segala perbuatannya)?"</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>كَلَّا لَئِنْ لَمْ يَنْتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ la'il lam yantahi lanasfa‘am bin-nâshiyah</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Sungguh, jika dia tidak berhenti (berbuat demikian), niscaya Kami tarik ubun-ubunnya (ke dalam neraka),"</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>نَاصِيَةٍ كَاذِبَةٍ خَاطِئَةٍ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> nâshiyating kâdzibatin khâthi'ah</p>
+        <p><strong>Artinya:</strong> "(yaitu) ubun-ubun orang yang mendustakan (kebenaran) dan durhaka."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>فَلْيَدْعُ نَادِيَهُ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> falyad‘u nâdiyah</p>
+        <p><strong>Artinya:</strong> "Biarlah dia memanggil golongannya (untuk menolongnya)."</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>سَنَدْعُ الزَّبَانِيَةَ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> sanad‘uz-zabâniyah</p>
+        <p><strong>Artinya:</strong> "Kelak Kami akan memanggil (Malaikat) Zabaniah (penyiksa orang-orang yang berdosa)."</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِبْ ۩ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ, lâ tuthi‘hu wasjud waqtarib</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Janganlah patuh kepadanya, (tetapi) sujud dan mendekatlah (kepada Allah)."</p>
+    </div>
+</div>
+
+<!-- Surat At-Tin -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat At-Tin</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالتِّينِ وَالزَّيْتُونِ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wat-tîni waz-zaitûn</p>
+        <p><strong>Artinya:</strong> "Demi (buah) tin dan (buah) zaitun,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَطُوْرِ سِيْنِيْنَ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa thûri sînîn</p>
+        <p><strong>Artinya:</strong> "demi gunung Sinai,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَهَذَا الْبَلَدِ الْأَمِينِ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa hâdzal-baladil-amîn</p>
+        <p><strong>Artinya:</strong> "dan demi negeri (Makkah) yang aman ini,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>لَقَدْ خَلَقْنَا الْإِنسَانَ فِيٓ أَحْسَنِ تَقْوِيمٍ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> laqad khalaqnal-insâna fî aḫsani taqwîm</p>
+        <p><strong>Artinya:</strong> "sungguh, Kami benar-benar telah menciptakan manusia dalam bentuk yang sebaik-baiknya."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>ثُمَّ رَدَدْنَاهُ أَسْفَلَ سَافِلِينَ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma radadnâhu asfala sâfilîn</p>
+        <p><strong>Artinya:</strong> "Kemudian, kami kembalikan dia ke tempat yang serendah-rendahnya,"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> illalladzîna âmanû wa ‘amilush-shâliḫâti fa lahum ajrun ghairu mamnûn</p>
+        <p><strong>Artinya:</strong> "kecuali orang-orang yang beriman dan mengerjakan kebajikan. Maka, mereka akan mendapat pahala yang tidak putus-putusnya."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>فَمَا يُكَذِّبُكَ بَعْدُ بِالدِّينِ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa mâ yukadzdzibuka ba‘du bid-dîn</p>
+        <p><strong>Artinya:</strong> "Maka, apa alasanmu (wahai orang kafir) mendustakan hari Pembalasan setelah (adanya bukti-bukti) itu?"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>أَلَيْسَ اللَّهُ بِأَحْكَمِ الْحَاكِمِينَ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a laisallâhu bi'aḫkamil-ḫâkimîn</p>
+        <p><strong>Artinya:</strong> "Bukankah Allah hakim yang paling adil?"</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Al-Insyirah -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Insyirah</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اَلَمْ نَشْرَحْ لَكَ صَدْرَكَ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam nasyraḫ laka shadrak</p>
+        <p><strong>Artinya:</strong> "Bukankah Kami telah melapangkan dadamu (Nabi Muhammad),"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَوَضَعْنَا عَنْكَ وِزْرَكَ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa wadla‘nâ ‘angka wizrak</p>
+        <p><strong>Artinya:</strong> "meringankan beban (tugas-tugas kenabian) darimu"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>الَّذِيْٓ اَنْقَضَ ظَهْرَكَ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî angqadla dhahrak</p>
+        <p><strong>Artinya:</strong> "yang memberatkan punggungmu,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَرَفَعْنَا لَكَ ذِكْرَكَ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa rafa‘nâ laka dzikrak</p>
+        <p><strong>Artinya:</strong> "dan meninggikan (derajat)-mu (dengan selalu) menyebut-nyebut (nama)-mu?"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa inna ma‘al-‘usri yusrâ</p>
+        <p><strong>Artinya:</strong> "Maka, sesungguhnya beserta kesulitan ada kemudahan."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>إِنَّ مَعَ الْعُسْرِ يُسْرًا ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna ma‘al-‘usri yusrâ</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya beserta kesulitan ada kemudahan."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>فَإِذَا فَرَغْتَ فَانصَبْ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa idzâ faraghta fanshab</p>
+        <p><strong>Artinya:</strong> "Apabila engkau telah selesai (dengan suatu kebajikan), teruslah bekerja keras (untuk kebajikan yang lain)"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَإِلَى رَبِّكَ فَارْغَبْ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ilâ rabbika farghab</p>
+        <p><strong>Artinya:</strong> "dan hanya kepada Tuhanmu berharaplah!"</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Adh-Dhuha -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Adh-Dhuha</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالضُّحٰى ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wadl-dluḫâ</p>
+        <p><strong>Artinya:</strong> "Demi waktu duha"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَالَّيْلِ إِذَا سَجَى ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-laili idzâ sajâ</p>
+        <p><strong>Artinya:</strong> "dan demi waktu malam apabila telah sunyi"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَى ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> mâ wadda‘aka rabbuka wa mâ qalâ</p>
+        <p><strong>Artinya:</strong> "Tuhanmu (Nabi Muhammad) tidak meninggalkan dan tidak (pula) membencimu."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَى ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lal-âkhiratu khairul laka minal-ûlâ</p>
+        <p><strong>Artinya:</strong> "Sungguh, akhirat itu lebih baik bagimu daripada yang permulaan (dunia)."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lasaufa yu‘thîka rabbuka fa tardlâ</p>
+        <p><strong>Artinya:</strong> "Sungguh, kelak (di akhirat nanti) Tuhanmu pasti memberikan karunia-Nya kepadamu sehingga engkau rida."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>أَلَمْ يَجِدْكَ يَتِيمًا فَآوَى ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam yajidka yatîman fa âwâ</p>
+        <p><strong>Artinya:</strong> "Bukankah Dia mendapatimu sebagai seorang yatim, lalu Dia melindungi(-mu);"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَوَجَدَكَ ضَالا فَهَدَى ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa wajadaka dlâllan fa hadâ</p>
+        <p><strong>Artinya:</strong> "mendapatimu sebagai seorang yang tidak tahu (tentang syariat), lalu Dia memberimu petunjuk (wahyu);"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَوَجَدَكَ عَائِلًا فَأَغْنَى ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa wajadaka ‘â'ilan fa aghnâ</p>
+        <p><strong>Artinya:</strong> "dan mendapatimu sebagai seorang yang fakir, lalu Dia memberimu kecukupan?"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ammal-yatîma fa lâ taq-har</p>
+        <p><strong>Artinya:</strong> "Terhadap anak yatim, janganlah engkau berlaku sewenang-wenang."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَأَمَّا السَّائِلَ فَلَا تَنهَرْ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammas-sâ'ila fa lâ tan-har</p>
+        <p><strong>Artinya:</strong> "Terhadap orang yang meminta-minta, janganlah engkau menghardik."</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammâ bini‘mati rabbika fa ḫaddits</p>
+        <p><strong>Artinya:</strong> "Terhadap nikmat Tuhanmu, nyatakanlah (dengan bersyukur)."</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Al-Lail -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Lail</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالْلَّيْلِ إِذَا يَغْشَى ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-laili idzâ yaghsyâ</p>
+        <p><strong>Artinya:</strong> "Demi malam apabila menutupi (cahaya siang),"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَالنَّهَارِ إِذَا تَجَلَّى ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wan-nahâri idzâ tajallâ</p>
+        <p><strong>Artinya:</strong> "dan demi siang apabila terang benderang,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَمَا خَلَقَ الذَّكَرَ وَالْأُنثَى ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ khalaqadz-dzakara wal-untsâ</p>
+        <p><strong>Artinya:</strong> "dan demi penciptaan laki-laki dan perempuan,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>إِنَّ سَعْيَكُمْ لَشَتَّى ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna sa‘yakum lasyattâ</p>
+        <p><strong>Artinya:</strong> "sesungguhnya usahamu benar-benar beraneka ragam."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَأَمَّا مَنْ أَعْطَی وَاتَّقَی ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ammâ man a‘thâ wattaqâ</p>
+        <p><strong>Artinya:</strong> "Siapa yang memberikan (hartanya di jalan Allah) dan bertakwa"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>وَصَدَّقَ بِالْحُسْنَى ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa shaddaqa bil-ḫusnâ</p>
+        <p><strong>Artinya:</strong> "serta membenarkan adanya (balasan) yang terbaik (surga),"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>فَسَنُيَسِّرُهُ لِلْيُسْرَى ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa sanuyassiruhû lil-yusrâ</p>
+        <p><strong>Artinya:</strong> "Kami akan melapangkan baginya jalan kemudahan (kebahagiaan)."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَأَمَّا مَنْ بَخِلَ وَاسْتَغْنَى ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammâ mam bakhila wastaghnâ</p>
+        <p><strong>Artinya:</strong> "Adapun orang yang kikir dan merasa dirinya cukup (tidak perlu pertolongan Allah)"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>وَكَذَّبَ بِالْحُسْنَى ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa kadzdzaba bil-ḫusnâ</p>
+        <p><strong>Artinya:</strong> "serta mendustakan (balasan) yang terbaik,"</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>فَسَنُيَسِّرُهُ لِلْعُسْرَى ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa sanuyassiruhû lil-‘usrâ</p>
+        <p><strong>Artinya:</strong> "Kami akan memudahkannya menuju jalan kesengsaraan."</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>وَمَا يُغْنِيْ عَنْهُ مَالُهُ إِذَا تَرَدَّى ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ yughnî ‘an-hu mâluhû idzâ taraddâ</p>
+        <p><strong>Artinya:</strong> "Hartanya tidak bermanfaat baginya apabila dia telah binasa."</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>إِنَّ عَلَيْنَا لَلْهُدَى ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna ‘alainâ lal-hudâ</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Kamilah yang (berhak) memberi petunjuk."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>وَإِنَّ لَنَا لَلْآخِرَةَ وَالْأُولَى ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa inna lanâ lal-âkhirata wal-ûlâ</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya milik Kamilah akhirat dan dunia."</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>فَأَنْذَرْتُكُمْ نَارًا تَلَظَّى ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa andzartukum nâran taladhdhâ</p>
+        <p><strong>Artinya:</strong> "Aku memperingatkanmu dengan neraka yang menyala-nyala."</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>لَا يَصْلَاهَا إِلَّا الْأَشْقَى ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lâ yashlâhâ illal-asyqâ</p>
+        <p><strong>Artinya:</strong> "Tidak masuk ke dalamnya kecuali orang yang paling celaka,"</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>الَّذِي كَذَّبَ وَتَوَلَّى ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî kadzdzaba wa tawallâ</p>
+        <p><strong>Artinya:</strong> "yang mendustakan (kebenaran) dan berpaling (dari keimanan)."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>وَسَيُجَنَّبُهَا الْأَتْقَى ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa sayujannabuhal-atqâ</p>
+        <p><strong>Artinya:</strong> "Akan dijauhkan darinya (neraka) orang yang paling bertakwa,"</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>الَّذِي يُؤْتِي مَالَهُ يَتَزَكَّى ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî yu'tî mâlahû yatazakkâ</p>
+        <p><strong>Artinya:</strong> "yang menginfakkan hartanya (di jalan Allah) untuk membersihkan (diri dari sifat kikir dan tamak)."</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>وَمَا لِأَحَدٍ عِندَهُ مِنْ نِعْمَةٍ تُجْزَى ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ li'aḫadin ‘indahû min ni‘matin tujzâ</p>
+        <p><strong>Artinya:</strong> "Tidak ada suatu nikmat pun yang diberikan seseorang kepadanya yang harus dibalas,"</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>إِلَّا ابْتِغَاءَ وَجْهِ رَبِّهِ الْأَعْلَى ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> illabtighâ'a waj-hi rabbihil-a‘lâ</p>
+        <p><strong>Artinya:</strong> "kecuali (dia memberikannya semata-mata) karena mencari keridaan Tuhannya Yang Mahatinggi."</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>وَلَسَوْفَ يَرْضَى ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lasaufa yardlâ</p>
+        <p><strong>Artinya:</strong> "Sungguh, kelak dia akan mendapatkan kepuasan (menerima balasan amalnya)."</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Asy-Syams -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Asy-Syams</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالشَّمْسِ وَضُحٰهَا ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wasy-syamsi wa dluḫâhâ</p>
+        <p><strong>Artinya:</strong> "Demi matahari dan sinarnya pada waktu duha (ketika matahari naik sepenggalah),"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَالْقَمَرِ إِذَا تَلَاهَا ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-qamari idzâ talâhâ</p>
+        <p><strong>Artinya:</strong> "demi bulan saat mengiringinya,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَالنَّهَارِ إِذَا جَلَّاهَا ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wan-nahâri idzâ jallâhâ</p>
+        <p><strong>Artinya:</strong> "demi siang saat menampakkannya,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَاللَّيْلِ إِذَا يَغْشَاهَا ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-laili idzâ yaghsyâhâ</p>
+        <p><strong>Artinya:</strong> "demi malam saat menutupinya (gelap gulita),"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَالسَّمَاءِ وَمَا بَنَاهَا ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> was-samâ'i wa mâ banâhâ</p>
+        <p><strong>Artinya:</strong> "demi langit serta pembuatannya,"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>وَالْأَرْضِ وَمَا طَحَاهَا ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-ardli wa mâ thaḫâhâ</p>
+        <p><strong>Artinya:</strong> "demi bumi serta penghamparannya,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَنَفْسٍ وَمَا سَوَّاهَا ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa nafsiw wa mâ sawwâhâ</p>
+        <p><strong>Artinya:</strong> "dan demi jiwa serta penyempurnaan (ciptaan)-nya,"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa al-hamahâ fujûrahâ wa taqwâhâ</p>
+        <p><strong>Artinya:</strong> "lalu Dia mengilhamkan kepadanya (jalan) kejahatan dan ketakwaannya,"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>قَدْ أَفْلَحَ مَنْ زَكَّاهَا ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> qad aflaḫa man zakkâhâ</p>
+        <p><strong>Artinya:</strong> "sungguh beruntung orang yang menyucikannya (jiwa itu)"</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَقَدْ خَابَ مَنْ دَسَّاهَا ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa qad khâba man dassâhâ</p>
+        <p><strong>Artinya:</strong> "dan sungguh rugi orang yang mengotorinya."</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kadzdzabats tsamûdu bithaghwâhâ</p>
+        <p><strong>Artinya:</strong> "(Kaum) Samud telah mendustakan (rasulnya) karena mereka melampaui batas"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>إِذِ انْبَعَثَ أَشْقَاهَا ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzimba‘atsa asyqâhâ</p>
+        <p><strong>Artinya:</strong> "ketika orang yang paling celaka di antara mereka bangkit (untuk menyembelih unta betina Allah)."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>فَقَالَ لَهُمْ رَسُولُ اللَّهِ نَاقَةَ اللَّهِ وَسُقْيَاهَا ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa qâla lahum rasûlullâhi nâqatallâhi wa suqyâhâ</p>
+        <p><strong>Artinya:</strong> "Rasul Allah (Saleh) lalu berkata kepada mereka, “(Biarkanlah) unta betina Allah ini beserta minumannya.”</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>فَكَذَّبُوهُ فَعَقَرُوهَا ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa kadzdzabûhu fa ‘aqarûhâ</p>
+        <p><strong>Artinya:</strong> "Namun, mereka kemudian mendustakannya (Saleh) dan menyembelih (unta betina) itu."</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>فَدَمْدَمَ عَلَيْهِمْ رَبُّهُمْ بِذَنْبِهِمْ فَسَوَّاهَا ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa damdama ‘alaihim rabbuhum bidzambihim fa sawwâhâ</p>
+        <p><strong>Artinya:</strong> "Maka, Tuhan membinasakan mereka karena dosa-dosanya, lalu meratakan mereka (dengan tanah)."</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>وَلَا يَخَافُ عُقْبَاهَا ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lâ yakhâfu ‘uqbâhâ</p>
+        <p><strong>Artinya:</strong> "Dia tidak takut terhadap akibatnya."</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Al-Balad -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Balad</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>لَآ أُقْسِمُ بِهٰذَا الْبَلَدِ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lâ uqsimu bihâdzal-balad</p>
+        <p><strong>Artinya:</strong> "Aku bersumpah demi negeri ini (Makkah),"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَأَنْتَ حِلٌّ بِهٰذَا الْبَلَدِ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa anta ḫillum bihâdzal-balad</p>
+        <p><strong>Artinya:</strong> "sedangkan engkau (Nabi Muhammad) bertempat tinggal di negeri (Makkah) ini."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَوَالِدٍ وَمَا وَلَدَ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa wâlidiw wa mâ walad</p>
+        <p><strong>Artinya:</strong> "(Aku juga bersumpah) demi bapak dan anaknya,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>لَقَدْ خَلَقْنَا الْإِنسَانَ فِيْ كَبَدٍ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> laqad khalaqnal-insâna fî kabad</p>
+        <p><strong>Artinya:</strong> "sungguh, Kami benar-benar telah menciptakan manusia dalam keadaan susah payah."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>أَيَحْسَبُ أَنْ لَّن يَّقْدِرَ عَلَيْهِ أَحَدٌ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a yaḫsabu al lay yaqdira ‘alaihi aḫad</p>
+        <p><strong>Artinya:</strong> "Apakah dia (manusia) itu mengira bahwa tidak ada seorang pun yang berkuasa atasnya?"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>يَقُوْلُ أَهْلَكْتُ مَالًا لُّبَدًا ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yaqûlu ahlaktu mâlal lubadâ</p>
+        <p><strong>Artinya:</strong> "Dia mengatakan, “Aku telah menghabiskan harta yang banyak.”"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>أَيَحْسَبُ أَنْ لَّمْ يَرَهُ أَحَدٌ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a yaḫsabu al lam yarahû aḫad</p>
+        <p><strong>Artinya:</strong> "Apakah dia mengira bahwa tidak ada seorang pun yang melihatnya?"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>أَلَمْ نَجْعَلْ لَّهُ عَيْنَيْنِ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam naj‘al lahû ‘ainaîn</p>
+        <p><strong>Artinya:</strong> "Bukankah Kami telah menjadikan untuknya sepasang mata,"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>وَلِسَانًا وَشَفَتَيْنِ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lisânaw wa syafataîn</p>
+        <p><strong>Artinya:</strong> "lidah, dan sepasang bibir,"</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَهَدَيْنَاهُ النَّجْدَيْنِ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa hadainâhun-najdaîn</p>
+        <p><strong>Artinya:</strong> "serta Kami juga telah menunjukkan kepadanya dua jalan (kebajikan dan kejahatan)?"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>فَلَا اقْتَحَمَ الْعَقَبَةَ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa laqtaḫamal-‘aqabah</p>
+        <p><strong>Artinya:</strong> "Maka, tidakkah sebaiknya dia menempuh jalan (kebajikan) yang mendaki dan sukar?"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>وَمَآ أَدْرَاكَ مَا الْعَقَبَةُ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mal-‘aqabah</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu apakah jalan yang mendaki dan sukar itu?"</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>فَكُّ رَقَبَةٍ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fakku raqabah</p>
+        <p><strong>Artinya:</strong> "(Itulah upaya) melepaskan perbudakan"</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>أَوْ إِطْعَامٌ فِيْ يَوْمٍ ذِيْ مَسْغَبَةٍ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> au ith‘âmun fî yaumin dzî masghabah</p>
+        <p><strong>Artinya:</strong> "atau memberi makan pada hari terjadi kelaparan"</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>يَتِيْمًا ذَا مَقْرَبَةٍ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yatîman dzâ maqrabah</p>
+        <p><strong>Artinya:</strong> "(kepada) anak yatim yang memiliki hubungan kekerabatan"</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>أَوْ مِسْكِيْنًا ذَا مَتْرَبَةٍ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> au miskînan dzâ matrabah</p>
+        <p><strong>Artinya:</strong> "atau orang miskin yang sangat membutuhkan."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>ثُمَّ كَانَ مِنَ الَّذِينَ آمَنُوا وَتَوَاصَوْا بِالصَّبْرِ وَتَوَاصَوْا بِالْمَرْحَمَةِ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma kâna minalladzîna âmanû wa tawâshau bish-shabri wa tawâshau bil-mar-ḫamah</p>
+        <p><strong>Artinya:</strong> "Kemudian, dia juga termasuk orang-orang yang beriman dan saling berpesan untuk bersabar serta saling berpesan untuk berkasih sayang."</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>أُو۟لَٰٓئِكَ أَصْحَابُ الْمَيْمَنَةِ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ulâ'ika ash-ḫâbul-maimanah</p>
+        <p><strong>Artinya:</strong> "Mereka itulah golongan kanan."</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>وَالَّذِينَ كَفَرُوا بِآيَاتِنَا هُمْ أَصْحَابُ الْمَشْئَمَةِ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> walladzîna kafarû bi'âyâtinâ hum ash-ḫâbul-masy'amah</p>
+        <p><strong>Artinya:</strong> "Adapun orang-orang yang kufur pada ayat-ayat Kami, merekalah golongan kiri."</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>عَلَيْهِمْ نَارٌ مُّؤْصَدَةٌ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘alaihim nârum mu'shadah</p>
+        <p><strong>Artinya:</strong> "Mereka berada dalam neraka yang ditutup rapat."</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Al-Fajr -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Fajr</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالْفَجْرِ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-fajr</p>
+        <p><strong>Artinya:</strong> "Demi waktu fajar,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَلَيَالٍ عَشْرٍ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa layâlin ‘asyr</p>
+        <p><strong>Artinya:</strong> "demi malam yang sepuluh,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَّالشَّفْعِ وَالْوَتْرِ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wasy-syaf‘i wal-watr</p>
+        <p><strong>Artinya:</strong> "demi yang genap dan yang ganjil,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَالَّيْلِ اِذَا يَسْرِ ۚ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-laili idzâ yasr</p>
+        <p><strong>Artinya:</strong> "dan demi malam apabila berlalu."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>هَلْ فِيْ ذٰلِكَ قَسَمٌ لِّذِيْ حِجْرٍ ۚ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> hal fî dzâlika qasamul lidzî ḫijr</p>
+        <p><strong>Artinya:</strong> "Apakah pada yang demikian itu terdapat sumpah (yang dapat diterima) oleh (orang) yang berakal?"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>اَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِعَادٍ ۖ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a lam tara kaifa fa‘ala rabbuka bi‘âd</p>
+        <p><strong>Artinya:</strong> "Tidakkah engkau (Nabi Muhammad) memperhatikan bagaimana Tuhanmu berbuat terhadap (kaum) ‘Ad,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>اِرَمَ ذَاتِ الْعِمَادِ ۖ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> irama dzâtil-‘imâd</p>
+        <p><strong>Artinya:</strong> "(yaitu) penduduk Iram (ibu kota kaum ‘Ad) yang mempunyai bangunan-bangunan yang tinggi"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>الَّتِيْ لَمْ يُخْلَقْ مِثْلُهَا فِى الْبِلَادِ ۖ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> allatî lam yukhlaq mitsluhâ fil-bilâd</p>
+        <p><strong>Artinya:</strong> "yang sebelumnya tidak pernah dibangun (suatu kota pun) seperti itu di negeri-negeri (lain)?"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>وَثَمُوْدَ الَّذِيْنَ جَابُوا الصَّخْرَ بِالْوَادِ ۖ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa tsamûdalladzîna jâbush-shakhra bil-wâd</p>
+        <p><strong>Artinya:</strong> "(Tidakkah engkau perhatikan pula kaum) Samud yang memotong batu-batu besar di lembah"</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَفِرْعَوْنَ ذِى الْاَوْتَادِ ۖ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa fir‘auna dzil-autâd</p>
+        <p><strong>Artinya:</strong> "dan Fir‘aun yang mempunyai pasak-pasak (bangunan yang besar)"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>الَّذِيْنَ طَغَوْا فِى الْبِلَادِ ۖ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzîna thaghau fil-bilâd</p>
+        <p><strong>Artinya:</strong> "yang berbuat sewenang-wenang dalam negeri,"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>فَاَكْثَرُوْا فِيْهَا الْفَسَادَ ۖ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa aktsarû fîhal-fasâd</p>
+        <p><strong>Artinya:</strong> "lalu banyak berbuat kerusakan di dalamnya (negeri itu),"</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>فَصَبَّ عَلَيْهِمْ رَبُّكَ سَوْطَ عَذَابٍ ۖ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa shabba ‘alaihim rabbuka sautha ‘adzâb</p>
+        <p><strong>Artinya:</strong> "maka Tuhanmu menimpakan cemeti azab (yang dahsyat) kepada mereka?"</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>اِنَّ رَبَّكَ لَبِالْمِرْصَادِ ۗ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna rabbaka labil-mirshâd</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Tuhanmu benar-benar mengawasi."</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>فَاَمَّا الْاِنْسَانُ اِذَا مَا ابْتَلٰىهُ رَبُّهُ فَاَكْرَمَهُ وَنَعَّمَهُ ۚ فَيَقُوْلُ رَبِّيْٓ اَكْرَمَنِ ۗ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ammal-insânu idzâ mabtalâhu rabbuhû fa akramahû wa na‘‘amahû fa yaqûlu rabbî akraman</p>
+        <p><strong>Artinya:</strong> "Adapun manusia, apabila Tuhan mengujinya lalu memuliakannya dan memberinya kenikmatan, berkatalah dia, “Tuhanku telah memuliakanku.”"</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>وَاَمَّا اِذَا مَا ابْتَلٰىهُ فَقَدَرَ عَلَيْهِ رِزْقَهُ ۚ فَيَقُوْلُ رَبِّيْٓ اَهَانَنِ ۚ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammâ idzâ mabtalâhu fa qadara ‘alaihi rizqahû fa yaqûlu rabbî ahânan</p>
+        <p><strong>Artinya:</strong> "Sementara itu, apabila Dia mengujinya lalu membatasi rezekinya, berkatalah dia, “Tuhanku telah menghinaku.”"</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>كَلَّا بَلْ لَّا تُكْرِمُوْنَ الْيَتِيْمَ ۚ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ bal lâ tukrimûnal-yatîm</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Sebaliknya, kamu tidak memuliakan anak yatim,"</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>وَلَا تَحَاضُّوْنَ عَلَىٰ طَعَامِ الْمِسْكِينَ ۚ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa lâ tahâdldlûna ‘alâ tha‘âmil-miskîn</p>
+        <p><strong>Artinya:</strong> "tidak saling mengajak memberi makan orang miskin,"</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>وَتَأْكُلُوْنَ التُّرَاثَ اَكْلًا لَّمًّا ۚ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ta'kulûnat-turâtsa aklal lammâ</p>
+        <p><strong>Artinya:</strong> "memakan harta warisan dengan cara mencampurbaurkan (yang halal dan yang haram),"</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>وَتُحِبُّوْنَ الْمَالَ حُبًّا جَمًّا ۗ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa tuḫibbûnal-mâla ḫubban jammâ</p>
+        <p><strong>Artinya:</strong> "dan mencintai harta dengan kecintaan yang berlebihan."</p>
+    </div>
+</div>
+
+<!-- Surat Al-Ghashiyah -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Surah Al-Ghashiyah</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>هَلْ اَتٰىكَ حَدِيْثُ الْغَاشِيَةِۗ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> hal atâka ḫadîtsul-ghâsyiyah</p>
+        <p><strong>Artinya:</strong> "Sudahkah sampai kepadamu berita tentang al-Gāsyiyah (hari Kiamat yang menutupi kesadaran manusia dengan kedahsyatannya)?"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وُجُوْهٌ يَّوْمَىِٕذٍ خَاشِعَةٌۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wujûhuy yauma'idzin khâsyi‘ah</p>
+        <p><strong>Artinya:</strong> "Pada hari itu banyak wajah yang tertunduk hina"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>عَامِلَةٌ نَّاصِبَةٌۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘âmilatun nâshibah</p>
+        <p><strong>Artinya:</strong> "(karena) berusaha keras (menghindari azab neraka) lagi kepayahan (karena dibelenggu)."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>تَصْلٰى نَارًا حَامِيَةًۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tashlâ nâran ḫâmiyah</p>
+        <p><strong>Artinya:</strong> "Mereka memasuki api (neraka) yang sangat panas."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>تُسْقٰى مِنْ عَيْنٍ اٰنِيَةٍۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tusqâ min ‘ainin âniyah</p>
+        <p><strong>Artinya:</strong> "(Mereka) diberi minum dari sumber mata air yang sangat panas."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>لَيْسَ لَهُمْ طَعَامٌ اِلَّا مِنْ ضَرِيْعٍۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> laisa lahum tha‘âmun illâ min dlarî‘</p>
+        <p><strong>Artinya:</strong> "Tidak ada makanan bagi mereka selain dari pohon yang berduri,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>لَّا يُسْمِنُ وَلَا يُغْنِيْ مِنْ جُوْعٍۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lâ yusminu wa lâ yughnî min jû‘</p>
+        <p><strong>Artinya:</strong> "yang tidak menggemukkan dan tidak pula menghilangkan lapar."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وُجُوْهٌ يَّوْمَىِٕذٍ نَّاعِمَةٌۙ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wujûhuy yauma'idzin nâ‘imah</p>
+        <p><strong>Artinya:</strong> "Pada hari itu banyak (pula) wajah yang berseri-seri,"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>لِّسَعْيِهَا رَاضِيَةٌۙ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lisa‘yihâ râdliyah</p>
+        <p><strong>Artinya:</strong> "merasa puas karena usahanya."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>فِيْ جَنَّةٍ عَالِيَةٍۙ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fî jannatin ‘âliyah</p>
+        <p><strong>Artinya:</strong> "(Mereka) dalam surga yang tinggi."</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>لَّا تَسْمَعُ فِيْهَا لَاغِيَةًۗ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lâ tasma‘u fîhâ lâghiyah</p>
+        <p><strong>Artinya:</strong> "Di sana kamu tidak mendengar (perkataan) yang tidak berguna."</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>فِيْهَا عَيْنٌ جَارِيَةٌۘ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fîhâ ‘ainun jâriyah</p>
+        <p><strong>Artinya:</strong> "Di sana ada mata air yang mengalir."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>فِيْهَا سُرُرٌ مَّرْفُوْعَةٌۙ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fîhâ sururum marfû‘ah</p>
+        <p><strong>Artinya:</strong> "Di sana ada (pula) dipan-dipan yang ditinggikan,"</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>وَّاَكْوَابٌ مَّوْضُوْعَةٌۙ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa akwâbum maudlû‘ah</p>
+        <p><strong>Artinya:</strong> "gelas-gelas yang tersedia (di dekatnya),"</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>وَّنَمَارِقُ مَصْفُوْفَةٌۙ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa namâriqu mashfûfah</p>
+        <p><strong>Artinya:</strong> "bantal-bantal sandaran yang tersusun,"</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>وَّزَرَابِيُّ مَبْثُوْثَةٌۗ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa zarâbiyyu mabtsûtsah</p>
+        <p><strong>Artinya:</strong> "dan permadani-permadani yang terhampar."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>اَفَلَا يَنْظُرُوْنَ اِلَى الْاِبِلِ كَيْفَ خُلِقَتْۗ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> a fa lâ yandhurûna ilal-ibili kaifa khuliqat</p>
+        <p><strong>Artinya:</strong> "Tidakkah mereka memperhatikan unta, bagaimana ia diciptakan?"</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>وَاِلَى السَّمَاۤءِ كَيْفَ رُفِعَتْۗ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ilas-samâ'i kaifa rufi‘at</p>
+        <p><strong>Artinya:</strong> "Bagaimana langit ditinggikan?"</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>وَاِلَى الْجِبَالِ كَيْفَ نُصِبَتْۗ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ilal-jibâli kaifa nushibat</p>
+        <p><strong>Artinya:</strong> "Bagaimana gunung-gunung ditegakkan?"</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>وَاِلَى الْاَرْضِ كَيْفَ سُطِحَتْۗ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ilal-ardli kaifa suthiḫat</p>
+        <p><strong>Artinya:</strong> "Bagaimana pula bumi dihamparkan?"</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>فَذَكِّرْۗ اِنَّمَآ اَنْتَ مُذَكِّرٌۙ ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa dzakkir, innamâ anta mudzakkir</p>
+        <p><strong>Artinya:</strong> "Maka, berilah peringatan karena sesungguhnya engkau (Nabi Muhammad) hanyalah pemberi peringatan."</p>
+        <br>
+
+        <!-- Ayat 22 -->
+        <h2 class="text-end"><strong>لَّسْتَ عَلَيْهِمْ بِمُصَيْطِرٍۙ ۝٢٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> lasta ‘alaihim bimushaithir</p>
+        <p><strong>Artinya:</strong> "Engkau bukanlah orang yang berkuasa atas mereka."</p>
+        <br>
+
+        <!-- Ayat 23 -->
+        <h2 class="text-end"><strong>اِلَّا مَنْ تَوَلّٰى وَكَفَرَۙ ۝٢٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> illâ man tawallâ wa kafar</p>
+        <p><strong>Artinya:</strong> "Akan tetapi, orang yang berpaling dan kufur,"</p>
+        <br>
+
+        <!-- Ayat 24 -->
+        <h2 class="text-end"><strong>فَيُعَذِّبُهُ اللّٰهُ الْعَذَابَ الْاَكْبَرَۗ ۝٢٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa yu‘adzdzibuhullâhul-‘adzâbal-akbar</p>
+        <p><strong>Artinya:</strong> "Allah akan mengazabnya dengan azab yang paling besar."</p>
+        <br>
+
+        <!-- Ayat 25 -->
+        <h2 class="text-end"><strong>اِنَّ اِلَيْنَآ اِيَابَهُمْ ۝٢٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna ilainâ iyâbahum</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya kepada Kamilah mereka kembali."</p>
+        <br>
+
+        <!-- Ayat 26 -->
+        <h2 class="text-end"><strong>ثُمَّ اِنَّ عَلَيْنَا حِسَابَهُمْࣖ ۝٢٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma inna ‘alainâ ḫisâbahum</p>
+        <p><strong>Artinya:</strong> "Kemudian, sesungguhnya Kamilah yang berhak melakukan hisab (perhitungan) atas mereka."</p>
+    </div>
+</div>
+
+<!-- Surat Al-A'la -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Surah Al-A'la</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>سَبِّحِ اسْمَ رَبِّكَ الْاَعْلَىۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> sabbiḫisma rabbikal-a‘lâ</p>
+        <p><strong>Artinya:</strong> "Sucikanlah nama Tuhanmu Yang Mahatinggi,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>الَّذِيْ خَلَقَ فَسَوّٰىۖ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî khalaqa fa sawwâ</p>
+        <p><strong>Artinya:</strong> "yang menciptakan, lalu menyempurnakan (ciptaan-Nya),"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَالَّذِيْ قَدَّرَ فَهَدٰىۖ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> walladzî qaddara fa hadâ</p>
+        <p><strong>Artinya:</strong> "yang menentukan kadar (masing-masing) dan memberi petunjuk,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَالَّذِيْٓ اَخْرَجَ الْمَرْعٰىۖ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> walladzî akhrajal-mar‘â</p>
+        <p><strong>Artinya:</strong> "dan yang menumbuhkan (rerumputan) padang gembala,"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَجَعَلَهٗ غُثَاۤءً اَحْوٰىۖ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ja‘alahû ghutsâ'an aḫwâ</p>
+        <p><strong>Artinya:</strong> "lalu menjadikannya kering kehitam-hitaman."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>سَنُقْرِئُكَ فَلَا تَنْسٰىٓۖ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> sanuqri'uka fa lâ tansâ</p>
+        <p><strong>Artinya:</strong> "Kami akan membacakan (Al-Qur’an) kepadamu (Nabi Muhammad) sehingga engkau tidak akan lupa,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>اِلَّا مَا شَاۤءَ اللّٰهُۗ اِنَّهٗ يَعْلَمُ الْجَهْرَ وَمَا يَخْفٰىۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> illâ mâ syâ'allâh, innahû ya‘lamul-jahra wa mâ yakhfâ</p>
+        <p><strong>Artinya:</strong> "kecuali jika Allah menghendaki. Sesungguhnya Dia mengetahui yang terang dan yang tersembunyi."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَنُيَسِّرُكَ لِلْيُسْرٰىۖ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa nuyassiruka lil-yusrâ</p>
+        <p><strong>Artinya:</strong> "Kami akan melapangkan bagimu jalan kemudahan (dalam segala urusan)."</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>فَذَكِّرْ اِنْ نَّفَعَتِ الذِّكْرٰىۗ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa dzakkir in nafa‘atidz-dzikrâ</p>
+        <p><strong>Artinya:</strong> "Maka, sampaikanlah peringatan jika peringatan itu bermanfaat."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>سَيَذَّكَّرُ مَنْ يَّخْشٰىۙ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> sayadzdzakkaru may yakhsyâ</p>
+        <p><strong>Artinya:</strong> "Orang yang takut (kepada Allah) akan mengambil pelajaran,"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>وَيَتَجَنَّبُهَا الْاَشْقَىۙ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa yatajannabuhal-asyqâ</p>
+        <p><strong>Artinya:</strong> "sedangkan orang-orang yang celaka (kafir) akan menjauhinya,"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>الَّذِيْ يَصْلَى النَّارَ الْكُبْرٰىۚ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî yashlan-nâral-kubrâ</p>
+        <p><strong>Artinya:</strong> "(yaitu) orang yang akan memasuki api (neraka) yang besar."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>ثُمَّ لَا يَمُوْتُ فِيْهَا وَلَا يَحْيٰىۗ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma lâ yamûtu fîhâ wa lâ yaḫyâ</p>
+        <p><strong>Artinya:</strong> "Selanjutnya, dia tidak mati dan tidak (pula) hidup di sana."</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>قَدْ اَفْلَحَ مَنْ تَزَكّٰىۙ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> qad aflaḫa man tazakkâ</p>
+        <p><strong>Artinya:</strong> "Sungguh, beruntung orang yang menyucikan diri (dari kekafiran)"</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>وَذَكَرَ اسْمَ رَبِّهٖ فَصَلّٰىۗ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa dzakarasma rabbihî fa shallâ</p>
+        <p><strong>Artinya:</strong> "dan mengingat nama Tuhannya, lalu dia salat."</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>بَلْ تُؤْثِرُوْنَ الْحَيٰوةَ الدُّنْيَاۖ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> bal tu'tsirûnal-ḫayâtad-dun-yâ</p>
+        <p><strong>Artinya:</strong> "Adapun kamu (orang-orang kafir) mengutamakan kehidupan dunia,"</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>وَالْاٰخِرَةُ خَيْرٌ وَّاَبْقٰىۗ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-âkhiratu khairuw wa abqâ</p>
+        <p><strong>Artinya:</strong> "padahal kehidupan akhirat itu lebih baik dan lebih kekal."</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>اِنَّ هٰذَا لَفِى الصُّحُفِ الْاُوْلٰىۙ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna hâdzâ lafish-shuḫufil-ûlâ</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya (penjelasan) ini terdapat dalam suhuf (lembaran-lembaran) yang terdahulu,"</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>صُحُفِ اِبْرٰهِيْمَ وَمُوْسٰىࣖ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> shuḫufi ibrâhîma wa mûsâ</p>
+        <p><strong>Artinya:</strong> "(yaitu) suhuf (yang diturunkan kepada) Ibrahim dan Musa."</p>
+    </div>
+</div>
+
+<!-- Surat At-Thariq -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Surah At-Thariq</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالسَّمَاۤءِ وَالطَّارِقِۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> was-samâ'i wath-thâriq</p>
+        <p><strong>Artinya:</strong> "Demi langit dan yang datang pada malam hari."</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا الطَّارِقُۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka math-thâriq</p>
+        <p><strong>Artinya:</strong> "Tahukah kamu apakah yang datang pada malam hari itu?"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>النَّجْمُ الثَّاقِبُۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> an-najmuts-tsâqib</p>
+        <p><strong>Artinya:</strong> "(Itulah) bintang yang bersinar tajam."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>اِنْ كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌۗ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ing kullu nafsil lammâ ‘alaihâ ḫâfidh</p>
+        <p><strong>Artinya:</strong> "Setiap orang pasti ada penjaganya."</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَلْيَنْظُرِ الْاِنْسَانُ مِمَّ خُلِقَ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> falyandhuril-insânu mimma khuliq</p>
+        <p><strong>Artinya:</strong> "Hendaklah manusia memperhatikan dari apa dia diciptakan."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>خُلِقَ مِنْ مَّاۤءٍ دَافِقٍۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> khuliqa mim mâ'in dâfiq</p>
+        <p><strong>Artinya:</strong> "Dia diciptakan dari air (mani) yang memancar,"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>يَّخْرُجُ مِنْۢ بَيْنِ الصُّلْبِ وَالتَّرَاۤىِٕبِۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yakhruju mim bainish-shulbi wat-tarâ'ib</p>
+        <p><strong>Artinya:</strong> "yang keluar dari antara tulang sulbi (punggung) dan tulang dada."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>اِنَّهٗ عَلٰى رَجْعِهٖ لَقَادِرٌۗ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahû ‘alâ raj‘ihî laqâdir</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Dia (Allah) benar-benar kuasa untuk mengembalikannya (hidup setelah mati)"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>يَوْمَ تُبْلَى السَّرَاۤىِٕرُۙ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma tublas-sarâ'ir</p>
+        <p><strong>Artinya:</strong> "pada hari ditampakkan segala rahasia."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>فَمَا لَهٗ مِنْ قُوَّةٍ وَّلَا نَاصِرٍۗ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa mâ lahû ming quwwatiw wa lâ nâshir</p>
+        <p><strong>Artinya:</strong> "Maka, baginya (manusia) tidak ada lagi kekuatan dan tidak (pula) ada penolong."</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>وَالسَّمَاۤءِ ذَاتِ الرَّجْعِۙ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> was-samâ'i dzâtir-raj‘</p>
+        <p><strong>Artinya:</strong> "Demi langit yang mengandung hujan"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>وَالْاَرْضِ ذَاتِ الصَّدْعِۙ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-ardli dzâtish-shad‘</p>
+        <p><strong>Artinya:</strong> "dan bumi yang memiliki rekahan (tempat tumbuhnya pepohonan),"</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>اِنَّهٗ لَقَوْلٌ فَصْلٌۙ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahû laqaulun fashl</p>
+        <p><strong>Artinya:</strong> "sesungguhnya (Al-Qur’an) itu benar-benar firman pemisah (antara yang hak dan yang batil)"</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>وَّمَا هُوَ بِالْهَزْلِۗ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ huwa bil-hazl</p>
+        <p><strong>Artinya:</strong> "dan ia (Al-Qur’an) sama sekali bukan perkataan senda gurau."</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>اِنَّهُمْ يَكِيْدُوْنَ كَيْدًاۙ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahum yakîdûna kaidâ</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya mereka (orang kafir) melakukan tipu daya."</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>وَّاَكِيْدُ كَيْدًاۖ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa akîdu kaidâ</p>
+        <p><strong>Artinya:</strong> "Aku pun membalasnya dengan tipu daya."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>فَمَهِّلِ الْكٰفِرِيْنَ اَمْهِلْهُمْ رُوَيْدًاࣖ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa mahhilil-kâfirîna am-hil-hum ruwaidâ</p>
+        <p><strong>Artinya:</strong> "Maka, tangguhkanlah orang-orang kafir itu. Biarkanlah mereka sejenak (bersenang-senang)."</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Al-Buruj -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Surah Al-Buruj</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالسَّمَاۤءِ ذَاتِ الْبُرُوْجِۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> was-samâ'i dzâtil-burûj</p>
+        <p><strong>Artinya:</strong> "Demi langit yang mempunyai gugusan bintang,"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَالْيَوْمِ الْمَوْعُوْدِۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-yaumil-mau‘ûd</p>
+        <p><strong>Artinya:</strong> "demi hari yang dijanjikan,"</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَشَاهِدٍ وَّمَشْهُوْدٍۗ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa syâhidiw wa masy-hûd</p>
+        <p><strong>Artinya:</strong> "demi yang menyaksikan dan yang disaksikan,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>قُتِلَ اَصْحٰبُ الْاُخْدُوْدِۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> qutila ash-ḫâbul-ukhdûd</p>
+        <p><strong>Artinya:</strong> "binasalah orang-orang yang membuat parit (tempat menyiksa orang mukmin)"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>النَّارِ ذَاتِ الْوَقُوْدِۙ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> an-nâri dzâtil-waqûd</p>
+        <p><strong>Artinya:</strong> "(yang dikobarkan) api penuh kayu bakar."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>اِذْ هُمْ عَلَيْهَا قُعُوْدٌۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idz hum ‘alaihâ qu‘ûd</p>
+        <p><strong>Artinya:</strong> "Ketika (itu) mereka (hanya) duduk di sekitarnya."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَّهُمْ عَلٰى مَا يَفْعَلُوْنَ بِالْمُؤْمِنِيْنَ شُهُوْدٌۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa hum ‘alâ mâ yaf‘alûna bil-mu'minîna syuhûd</p>
+        <p><strong>Artinya:</strong> "Mereka menyaksikan apa yang mereka perbuat terhadap orang-orang mukmin."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَمَا نَقَمُوْا مِنْهُمْ اِلَّآ اَنْ يُّؤْمِنُوْا بِاللّٰهِ الْعَزِيْزِ الْحَمِيْدِۙ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ naqamû min-hum illâ ay yu'minû billâhil-‘azîzil-ḫamîd</p>
+        <p><strong>Artinya:</strong> "Tidaklah mereka menyiksa (membakar) orang-orang mukmin itu, kecuali karena mereka beriman kepada Allah Yang Mahaperkasa lagi Maha Terpuji,"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>الَّذِيْ لَهٗ مُلْكُ السَّمٰوٰتِ وَالْاَرْضِۗ وَاللّٰهُ عَلٰى كُلِّ شَيْءٍ شَهِيْدٌۗ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî lahû mulkus-samâwâti wal-ardl, wallâhu ‘alâ kulli syai'in syahîd</p>
+        <p><strong>Artinya:</strong> "yang memiliki kerajaan langit dan bumi. Allah Maha Menyaksikan segala sesuatu."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>اِنَّ الَّذِيْنَ فَتَنُوا الْمُؤْمِنِيْنَ وَالْمُؤْمِنٰتِ ثُمَّ لَمْ يَتُوْبُوْا فَلَهُمْ عَذَابُ جَهَنَّمَ وَلَهُمْ عَذَابُ الْحَرِيْقِۗ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innalladzîna fatanul-mu'minîna wal-mu'minâti tsumma lam yatûbû fa lahum ‘adzâbu jahannama wa lahum ‘adzâbul-ḫarîq</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya, orang-orang yang menimpakan cobaan (siksa) terhadap mukmin laki-laki dan perempuan, lalu mereka tidak bertobat, mereka akan mendapat azab Jahanam dan mereka akan mendapat azab (neraka) yang membakar."</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>اِنَّ الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ لَهُمْ جَنّٰتٌ تَجْرِيْ مِنْ تَحْتِهَا الْاَنْهٰرُ ەۗ ذٰلِكَ الْفَوْزُ الْكَبِيْرُۗ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innalladzîna âmanû wa ‘amilush-shâliḫâti lahum jannâtun tajrî min taḫtihal-an-hâr, dzâlikal-fauzul-kabîr</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya, orang-orang yang beriman dan mengerjakan kebajikan, mereka akan mendapat surga yang mengalir di bawahnya sungai-sungai. Itulah kemenangan yang besar."</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>اِنَّ بَطْشَ رَبِّكَ لَشَدِيْدٌۗ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> inna bathsya rabbika lasyadîd</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya azab Tuhanmu sangat keras."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>اِنَّهٗ هُوَ يُبْدِئُ وَيُعِيْدُۚ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahû huwa yubdi'u wa yu‘îd</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya Dialah yang memulai (penciptaan makhluk) dan yang mengembalikan (hidup setelah mati)."</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>وَهُوَ الْغَفُوْرُ الْوَدُوْدُۙ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa huwal-ghafûrul-wadûd</p>
+        <p><strong>Artinya:</strong> "Dialah Yang Maha Pengampun lagi Maha Pengasih,"</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>ذُو الْعَرْشِ الْمَجِيْدُۙ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> dzul-‘arsyil-majîd</p>
+        <p><strong>Artinya:</strong> "Pemilik ʻArasy lagi Mahamulia,"</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>فَعَّالٌ لِّمَا يُرِيْدُۗ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa‘‘âlul limâ yurîd</p>
+        <p><strong>Artinya:</strong> "Mahakuasa berbuat apa saja yang Dia kehendaki."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>هَلْ اَتٰىكَ حَدِيْثُ الْجُنُوْدِۙ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> hal atâka ḫadîtsul-junûd</p>
+        <p><strong>Artinya:</strong> "Sudahkah sampai kepadamu berita tentang bala tentara,"</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>فِرْعَوْنَ وَثَمُوْدَۗ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fir‘auna wa tsamûd</p>
+        <p><strong>Artinya:</strong> "(yaitu bala tentara) Fir‘aun dan Samud?"</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>بَلِ الَّذِيْنَ كَفَرُوْا فِيْ تَكْذِيْبٍۙ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> balilladzîna kafarû fî takdzîb</p>
+        <p><strong>Artinya:</strong> "Memang orang-orang kafir (selalu) mendustakan,"</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>وَّاللّٰهُ مِنْ وَّرَاۤىِٕهِمْ مُّحِيْطٌۚ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wallâhu miw warâ'ihim muḫîth</p>
+        <p><strong>Artinya:</strong> "padahal Allah mengepung dari belakang mereka."</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>بَلْ هُوَ قُرْاٰنٌ مَّجِيْدٌۙ ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> bal huwa qur'ânum majîd</p>
+        <p><strong>Artinya:</strong> "Bahkan, (yang didustakan itu) Al-Qur’an yang mulia"</p>
+        <br>
+
+        <!-- Ayat 22 -->
+        <h2 class="text-end"><strong>فِيْ لَوْحٍ مَّحْفُوْظٍࣖ ۝٢٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fî lauḫim maḫfûdh</p>
+        <p><strong>Artinya:</strong> "yang (tersimpan) dalam (tempat) yang terjaga (Lauh Mahfuz)."</p>
+        <br>
+    </div>
+</div>
+
+<!-- Surat Al-Insyiqaq -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Surah Al-Insyiqaq</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اِذَا السَّمَاۤءُ انْشَقَّتْۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzas-samâ'unsyaqqat</p>
+        <p><strong>Artinya:</strong> "Apabila langit terbelah"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَاَذِنَتْ لِرَبِّهَا وَحُقَّتْۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa adzinat lirabbihâ wa ḫuqqat</p>
+        <p><strong>Artinya:</strong> "serta patuh kepada Tuhannya dan sudah semestinya patuh."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَاِذَا الْاَرْضُ مُدَّتْۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-ardlu muddat</p>
+        <p><strong>Artinya:</strong> "Apabila bumi diratakan,"</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَاَلْقَتْ مَا فِيْهَا وَتَخَلَّتْۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa alqat mâ fîhâ wa takhallat</p>
+        <p><strong>Artinya:</strong> "memuntahkan apa yang ada di dalamnya dan menjadi kosong,"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَاَذِنَتْ لِرَبِّهَا وَحُقَّتْۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa adzinat lirabbihâ wa ḫuqqat</p>
+        <p><strong>Artinya:</strong> "serta patuh kepada Tuhannya, dan sudah semestinya patuh."</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>يٰٓاَيُّهَا الْاِنْسَانُ اِنَّكَ كَادِحٌ اِلٰى رَبِّكَ كَدْحًا فَمُلٰقِيْهِۚ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yâ ayyuhal-insânu innaka kâdiḫun ilâ rabbika kad-ḫan fa mulâqîh</p>
+        <p><strong>Artinya:</strong> "Wahai manusia, sesungguhnya engkau telah bekerja keras menuju (pertemuan dengan) Tuhanmu. Maka, engkau pasti menemui-Nya."</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>فَاَمَّا مَنْ اُوْتِيَ كِتٰبَهٗ بِيَمِيْنِهٖۙ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ammâ man ûtiya kitâbahû biyamînih</p>
+        <p><strong>Artinya:</strong> "Adapun orang yang catatannya diberikan dari sebelah kanannya,"</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>فَسَوْفَ يُحَاسَبُ حِسَابًا يَّسِيْرًاۙ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa saufa yuḫâsabu ḫisâbay yasîrâ</p>
+        <p><strong>Artinya:</strong> "dia akan dihisab dengan pemeriksaan yang mudah"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>وَّيَنْقَلِبُ اِلٰٓى اَهْلِهٖ مَسْرُوْرًاۗ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa yangqalibu ilâ ahlihî masrûrâ</p>
+        <p><strong>Artinya:</strong> "dan dia akan kembali kepada keluarganya (yang sama-sama beriman) dengan gembira."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَاَمَّا مَنْ اُوْتِيَ كِتٰبَهٗ وَرَاۤءَ ظَهْرِهٖۙ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammâ man ûtiya kitâbahû warâ'a dhahrih</p>
+        <p><strong>Artinya:</strong> "Adapun orang yang catatannya diberikan dari belakang punggungnya,"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>فَسَوْفَ يَدْعُوْ ثُبُوْرًاۙ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa saufa yad‘û tsubûrâ</p>
+        <p><strong>Artinya:</strong> "dia akan berteriak, “Celakalah aku!”"</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>وَّيَصْلٰى سَعِيْرًاۗ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa yashlâ sa‘îrâ</p>
+        <p><strong>Artinya:</strong> "Dia akan memasuki (neraka) Sa‘ir (yang menyala-nyala)."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>اِنَّهٗ كَانَ فِيْٓ اَهْلِهٖ مَسْرُوْرًاۗ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahû kâna fî ahlihî masrûrâ</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya dia dahulu (di dunia) bergembira di kalangan keluarganya (yang sama-sama kafir)."</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>اِنَّهٗ ظَنَّ اَنْ لَّنْ يَّحُوْرَۛ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahû dhanna al lay yaḫûr</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya dia mengira bahwa dia tidak akan kembali (kepada Tuhannya)."</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>بَلٰىۛ اِنَّ رَبَّهٗ كَانَ بِهٖ بَصِيْرًاۗ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> balâ inna rabbahû kâna bihî bashîrâ</p>
+        <p><strong>Artinya:</strong> "Tidak demikian. Sesungguhnya Tuhannya selalu melihatnya."</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>فَلَآ اُقْسِمُ بِالشَّفَقِۙ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa lâ uqsimu bisy-syafaq</p>
+        <p><strong>Artinya:</strong> "Aku bersumpah demi cahaya merah pada waktu senja,"</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>وَالَّيْلِ وَمَا وَسَقَۙ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-laili wa mâ wasaq</p>
+        <p><strong>Artinya:</strong> "demi malam dan apa yang diselubunginya,"</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>وَالْقَمَرِ اِذَا اتَّسَقَۙ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-qamari idzattasaq</p>
+        <p><strong>Artinya:</strong> "dan demi bulan apabila jadi purnama,"</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>لَتَرْكَبُنَّ طَبَقًا عَنْ طَبَقٍۗ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> latarkabunna thabaqan ‘an thabaq</p>
+        <p><strong>Artinya:</strong> "sungguh, kamu benar-benar akan menjalani tingkat demi tingkat (dalam kehidupan)."</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>فَمَا لَهُمْ لَا يُؤْمِنُوْنَۙ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa mâ lahum lâ yu'minûn</p>
+        <p><strong>Artinya:</strong> "Maka, mengapa mereka tidak mau beriman?"</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>وَاِذَا قُرِئَ عَلَيْهِمُ الْقُرْاٰنُ لَا يَسْجُدُوْنَۗ ۩ ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzâ quri'a ‘alaihimul-qur'ânu lâ yasjudûn</p>
+        <p><strong>Artinya:</strong> "Apabila Al-Qur’an dibacakan kepada mereka, mereka tidak (mau) bersujud,"</p>
+        <br>
+
+        <!-- Ayat 22 -->
+        <h2 class="text-end"><strong>بَلِ الَّذِيْنَ كَفَرُوْا يُكَذِّبُوْنَۖ ۝٢٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> balilladzîna kafarû yukadzdzibûn</p>
+        <p><strong>Artinya:</strong> "bahkan orang-orang yang kufur itu mendustakan(-nya)."</p>
+        <br>
+
+        <!-- Ayat 23 -->
+        <h2 class="text-end"><strong>وَاللّٰهُ اَعْلَمُ بِمَا يُوْعُوْنَۖ ۝٢٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wallâhu a‘lamu bimâ yû‘ûn</p>
+        <p><strong>Artinya:</strong> "Allah lebih mengetahui apa yang mereka sembunyikan (dalam hati mereka)."</p>
+        <br>
+
+        <!-- Ayat 24 -->
+        <h2 class="text-end"><strong>فَبَشِّرْهُمْ بِعَذَابٍ اَلِيْمٍۙ ۝٢٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa basysyir-hum bi‘adzâbin alîm</p>
+        <p><strong>Artinya:</strong> "Maka, berilah mereka kabar ‘gembira’ dengan azab yang pedih,"</p>
+        <br>
+
+        <!-- Ayat 25 -->
+        <h2 class="text-end"><strong>اِلَّا الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ لَهُمْ اَجْرٌ غَيْرُ مَمْنُوْنٍࣖ ۝٢٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> illalladzîna âmanû wa ‘amilush-shâliḫâti lahum ajrun ghairu mamnûn</p>
+        <p><strong>Artinya:</strong> "kecuali orang-orang yang beriman dan mengerjakan kebajikan. Bagi merekalah pahala yang tidak putus-putus."</p>
+        <br>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Muthaffifin</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَيْلٌ لِّلْمُطَفِّفِيْنَۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wailul lil-muthaffifîn</p>
+        <p><strong>Artinya:</strong> "Celakalah orang-orang yang curang (dalam menakar dan menimbang)!"</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>الَّذِيْنَ اِذَا اكْتَالُوْا عَلَى النَّاسِ يَسْتَوْفُوْنَۖ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzîna idzaktâlû ‘alan-nâsi yastaufûn</p>
+        <p><strong>Artinya:</strong> "(Mereka adalah) orang-orang yang apabila menerima takaran dari orang lain, mereka minta dipenuhi."</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَاِذَا كَالُوْهُمْ اَوْ وَّزَنُوْهُمْ يُخْسِرُوْنَۗ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzâ kâlûhum aw wazanûhum yukhsirûn</p>
+        <p><strong>Artinya:</strong> "(Sebaliknya,) apabila mereka menakar atau menimbang untuk orang lain, mereka kurangi."</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>اَلَا يَظُنُّ اُولٰۤىِٕكَ اَنَّهُمْ مَّبْعُوْثُوْنَۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alâ yadhunnu ulâ'ika annahum mab‘ûtsûn</p>
+        <p><strong>Artinya:</strong> "Tidakkah mereka mengira (bahwa) sesungguhnya mereka akan dibangkitkan?"</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>لِيَوْمٍ عَظِيْمٍۙ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> liyaumin ‘adhîm</p>
+        <p><strong>Artinya:</strong> "pada suatu hari yang besar (Kiamat),"</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>يَّوْمَ يَقُوْمُ النَّاسُ لِرَبِّ الْعٰلَمِيْنَۗ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma yaqûmun-nâsu lirabbil-‘âlamîn</p>
+        <p><strong>Artinya:</strong> "(yaitu) hari (ketika) manusia bangkit menghadap Tuhan seluruh alam?"</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>كَلَّآ اِنَّ كِتٰبَ الْفُجَّارِ لَفِيْ سِجِّيْنٍۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ inna kitâbal-fujjâri lafî sijjîn</p>
+        <p><strong>Artinya:</strong> "Jangan sekali-kali begitu! Sesungguhnya catatan orang yang durhaka benar-benar (tersimpan) dalam Sijjīn."</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا سِجِّيْنٌۗ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mâ sijjîn</p>
+        <p><strong>Artinya:</strong> "Tahukah engkau apakah Sijjīn itu?"</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>كِتٰبٌ مَّرْقُوْمٌۗ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kitâbum marqûm</p>
+        <p><strong>Artinya:</strong> "(Ia adalah) kitab yang berisi catatan (amal)."</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَيْلٌ يَّوْمَىِٕذٍ لِّلْمُكَذِّبِيْنَۙ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wailuy yauma'idzil lil-mukadzdzibîn</p>
+        <p><strong>Artinya:</strong> "Celakalah pada hari itu bagi para pendusta,"</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>الَّذِيْنَ يُكَذِّبُوْنَ بِيَوْمِ الدِّيْنِۗ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzîna yukadzdzibûna biyaumid-dîn</p>
+        <p><strong>Artinya:</strong> "yaitu orang-orang yang mendustakan hari Pembalasan."</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>وَمَا يُكَذِّبُ بِهٖٓ اِلَّا كُلُّ مُعْتَدٍ اَثِيْمٍۙ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ yukadzdzibu bihî illâ kullu mu‘tadin atsîm</p>
+        <p><strong>Artinya:</strong> "Tidak ada yang mendustakannya, kecuali setiap orang yang melampaui batas lagi sangat berdosa."</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>اِذَا تُتْلٰى عَلَيْهِ اٰيٰتُنَا قَالَ اَسَاطِيْرُ الْاَوَّلِيْنَۗ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzâ tutlâ ‘alaihi âyâtunâ qâla asâthîrul-awwalîn</p>
+        <p><strong>Artinya:</strong> "Apabila dibacakan kepadanya ayat-ayat Kami, dia berkata, “(Itu adalah) dongeng orang-orang dahulu.”</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>كَلَّا بَلْ ۜ رَانَ عَلٰى قُلُوْبِهِمْ مَّا كَانُوْا يَكْسِبُوْنَ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ bal râna ‘alâ qulûbihim mâ kânû yaksibûn</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Bahkan, apa yang selalu mereka kerjakan itu telah menutupi hati mereka."</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>كَلَّآ اِنَّهُمْ عَنْ رَّبِّهِمْ يَوْمَىِٕذٍ لَّمَحْجُوْبُوْنَۗ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ innahum ‘ar rabbihim yauma'idzil lamaḫjûbûn</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Sesungguhnya mereka pada hari itu benar-benar terhalang dari (rahmat) Tuhannya."</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>ثُمَّ اِنَّهُمْ لَصَالُوا الْجَحِيْمِۗ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma innahum lashâlul-jaḫîm</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya mereka kemudian benar-benar masuk (neraka) Jahim."</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>ثُمَّ يُقَالُ هٰذَا الَّذِيْ كُنْتُمْ بِهٖ تُكَذِّبُوْنَۗ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma yuqâlu hâdzalladzî kuntum bihî tukadzdzibûn</p>
+        <p><strong>Artinya:</strong> "Lalu dikatakan (kepada mereka), “Inilah (azab) yang selalu kamu dustakan.”</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>كَلَّآ اِنَّ كِتٰبَ الْاَبْرَارِ لَفِيْ عِلِّيِّيْنَۗ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ inna kitâbal-abrâri lafî ‘illiyyîn</p>
+        <p><strong>Artinya:</strong> "Sekali-kali tidak! Sesungguhnya catatan orang-orang yang berbakti benar-benar tersimpan dalam ‘Illiyyīn."</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا عِلِّيُّوْنَۗ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mâ ‘illiyyûn</p>
+        <p><strong>Artinya:</strong> "Tahukah engkau apakah ‘Illiyyīn itu?"</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>كِتٰبٌ مَّرْقُوْمٌۙ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kitâbum marqûm</p>
+        <p><strong>Artinya:</strong> "(Itulah) kitab yang berisi catatan (amal)"</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>يَّشْهَدُهُ الْمُقَرَّبُوْنَۗ ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yasy-haduhul-muqarrabûn</p>
+        <p><strong>Artinya:</strong> "yang disaksikan oleh (malaikat-malaikat) yang didekatkan (kepada Allah)."</p>
+        <br>
+
+        <!-- Ayat 22 -->
+        <h2 class="text-end"><strong>اِنَّ الْاَبْرَارَ لَفِيْ نَعِيْمٍۙ ۝٢٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innal-abrâra lafî na‘îm</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya orang-orang yang berbakti benar-benar berada dalam (surga yang penuh) kenikmatan."</p>
+        <br>
+
+        <!-- Ayat 23 -->
+        <h2 class="text-end"><strong>عَلَى الْاَرَائِكِ يَنْظُرُوْنَۗ ۝٢٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘alâ l-arâiki yansurûn</p>
+        <p><strong>Artinya:</strong> "Pada dipan-dipan yang terhampar mereka memandang." </p>
+        <br>
+
+        <!-- Ayat 24 -->
+        <h2 class="text-end"><strong>تَعْرِفُ فِي وُجُوْهِهِمْ نَضْرَةَ النَّعِيْمِۙ ۝٢٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ta‘rifu fî wujûhihim naḍratal-na‘îm</p>
+        <p><strong>Artinya:</strong> "Kamu dapat mengenali pada wajah-wajah mereka cahaya kebahagiaan (surga)."</p>
+        <br>
+
+        <!-- Ayat 25 -->
+        <h2 class="text-end"><strong>يُسْقَوْنَ مِنْ رَّحِیْقٍ مَّخْتُوْمٍۗ ۝٢٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yusqawna min raḥîqin makhtûm</p>
+        <p><strong>Artinya:</strong> "Mereka diberi minum dari khamar murni yang disegel (aroma dan rasanya)."</p>
+        <br>
+
+        <!-- Ayat 26 -->
+        <h2 class="text-end"><strong>خِتَامُهُ مِسْكٌۗ ۝٢٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> khitâmuhu misk</p>
+        <p><strong>Artinya:</strong> "Segelnya adalah misk (kasturi)." </p>
+        <br>
+
+        <!-- Ayat 27 -->
+        <h2 class="text-end"><strong>وَفِي ذٰلِكَ فَلْيَتَنَافَسِ الْمُتَنَافِسُوْنَۗ ۝٢٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa fî dzâlika fal-yatanâfasi-l mutanâfisûn</p>
+        <p><strong>Artinya:</strong> "Karena itu, hendaklah orang-orang yang ingin berlomba berlomba dalam hal itu." </p>
+        <br>
+
+        <!-- Ayat 28 -->
+        <h2 class="text-end"><strong>وَمِزَاجُهُ مِنْ تَسْنِیْمٍۚ ۝٢٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mizâjuhu min tasnîm</p>
+        <p><strong>Artinya:</strong> "Dan campurannya adalah dari air Tasnîm,"</p>
+        <br>
+
+        <!-- Ayat 29 -->
+        <h2 class="text-end"><strong>عَيْنًا يَشْرَبُهَا الْمُقَرَّبُوْنَۗ ۝٢٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘aynâ yashrabuhâ l-muqarrabûn</p>
+        <p><strong>Artinya:</strong> "mata air yang diminum oleh orang-orang yang didekatkan (kepada Allah)."</p>
+        <br>
+
+        <!-- Ayat 30 -->
+        <h2 class="text-end"><strong>اِنَّ الَّذِيْنَ جَاءُوْا مِنْ بَعْدِهِمْ مُعْتَدُوْنَۚ ۝٣٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innalladzîna ja'û min ba'dihim mu‘tadûn</p>
+        <p><strong>Artinya:</strong> "Sesungguhnya orang-orang yang datang setelah mereka adalah pendusta." </p>
+        <br>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat Al-Infithar</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اِذَا السَّمَاۤءُ انْفَطَرَتْۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzas-samâ'unfatharat</p>
+        <p><strong>Artinya:</strong> Apabila langit terbelah,</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَاِذَا الْكَوَاكِبُ انْتَثَرَتْۙ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-kawâkibuntatsarat</p>
+        <p><strong>Artinya:</strong> apabila bintang-bintang jatuh berserakan,</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَاِذَا الْبِحَارُ فُجِّرَتْۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-biḫâru fujjirat</p>
+        <p><strong>Artinya:</strong> apabila lautan diluapkan,</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَاِذَا الْقُبُوْرُ بُعْثِرَتْۙ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-qubûru bu‘tsirat</p>
+        <p><strong>Artinya:</strong> dan apabila kuburan-kuburan dibongkar,</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>عَلِمَتْ نَفْسٌ مَّا قَدَّمَتْ وَاَخَّرَتْۗ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘alimat nafsum mâ qaddamat wa akhkharat</p>
+        <p><strong>Artinya:</strong> setiap jiwa akan mengetahui apa yang telah dikerjakan dan yang dilalaikan(-nya).</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>يٰٓاَيُّهَا الْاِنْسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيْمِۙ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yâ ayyuhal-insânu mâ gharraka birabbikal-karîm</p>
+        <p><strong>Artinya:</strong> Wahai manusia, apakah yang telah memperdayakanmu (berbuat durhaka) terhadap Tuhanmu Yang Mahamulia,</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>الَّذِيْ خَلَقَكَ فَسَوّٰىكَ فَعَدَلَكَۙ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> alladzî khalaqaka fa sawwâka fa ‘adalak</p>
+        <p><strong>Artinya:</strong> yang telah menciptakanmu lalu menyempurnakan kejadianmu dan menjadikan (susunan tubuh)-mu seimbang?</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>فِيْٓ اَيِّ صُوْرَةٍ مَّا شَاۤءَ رَكَّبَكَۗ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fî ayyi shûratim mâ syâ'a rakkabak</p>
+        <p><strong>Artinya:</strong> Dalam bentuk apa saja yang dikehendaki, Dia menyusun (tubuh)-mu.</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>كَلَّا بَلْ تُكَذِّبُوْنَ بِالدِّيْنِۙ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ bal tukadzdzibûna bid-dîn</p>
+        <p><strong>Artinya:</strong> Jangan sekali-kali begitu! Bahkan, kamu mendustakan hari Pembalasan.</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَاِنَّ عَلَيْكُمْ لَحٰفِظِيْنَۙ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa inna ‘alaikum laḫâfidhîn</p>
+        <p><strong>Artinya:</strong> Sesungguhnya bagi kamu ada (malaikat-malaikat) pengawas</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>كِرَامًا كٰتِبِيْنَۙ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kirâmang kâtibîn</p>
+        <p><strong>Artinya:</strong> yang mulia (di sisi Allah) dan mencatat (amal perbuatanmu).</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>يَعْلَمُوْنَ مَا تَفْعَلُوْنَ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ya‘lamûna mâ taf‘alûn</p>
+        <p><strong>Artinya:</strong> Mereka mengetahui apa yang kamu kerjakan.</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>اِنَّ الْاَبْرَارَ لَفِيْ نَعِيْمٍۙ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innal-abrâra lafî na‘îm</p>
+        <p><strong>Artinya:</strong> Sesungguhnya orang-orang yang berbakti benar-benar berada dalam (surga yang penuh) kenikmatan.</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>وَّاِنَّ الْفُجَّارَ لَفِيْ جَحِيْمٍ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa innal-fujjâra lafî jaḫîm</p>
+        <p><strong>Artinya:</strong> Sesungguhnya orang-orang yang durhaka benar-benar berada dalam (neraka) Jahim.</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>يَصْلَوْنَهَا يَوْمَ الدِّيْنِ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yashlaunahâ yaumad-dîn</p>
+        <p><strong>Artinya:</strong> Mereka memasukinya pada hari Pembalasan.</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>وَمَا هُمْ عَنْهَا بِغَاۤىِٕبِيْنَۗ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ hum ‘an-hâ bighâ'ibîn</p>
+        <p><strong>Artinya:</strong> Mereka tidak mungkin keluar dari (neraka) itu.</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>وَمَآ اَدْرٰىكَ مَا يَوْمُ الدِّيْنِۙ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ adrâka mâ yaumud-dîn</p>
+        <p><strong>Artinya:</strong> Tahukah engkau apakah hari Pembalasan itu?</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>ثُمَّ مَآ اَدْرٰىكَ مَا يَوْمُ الدِّيْنِۗ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma mâ adrâka mâ yaumud-dîn</p>
+        <p><strong>Artinya:</strong> Kemudian, tahukah engkau apakah hari Pembalasan itu?</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>يَوْمَ لَا تَمْلِكُ نَفْسٌ لِّنَفْسٍ شَيْـًٔاۗ وَالْاَمْرُ يَوْمَىِٕذٍ لِّلّٰهِࣖ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma lâ tamliku nafsul linafsin syai'â, wal-amru yauma'idzil lillâh</p>
+        <p><strong>Artinya:</strong> (Itulah) hari (ketika) seseorang tidak berdaya (menolong) orang lain sedikit pun. Segala urusan pada hari itu adalah milik Allah.</p>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat At-Takwir</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>اِذَا الشَّمْسُ كُوِّرَتْۖ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> idzasy-syamsu kuwwirat</p>
+        <p><strong>Artinya:</strong> Apabila matahari digulung,</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَاِذَا النُّجُوْمُ انْكَدَرَتْۖ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzan-nujûmungkadarat</p>
+        <p><strong>Artinya:</strong> apabila bintang-bintang berjatuhan,</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَاِذَا الْجِبَالُ سُيِّرَتْۖ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-jibâlu suyyirat</p>
+        <p><strong>Artinya:</strong> apabila gunung-gunung dihancurkan,</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>وَاِذَا الْعِشَارُ عُطِّلَتْۖ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-‘isyâru ‘uththilat</p>
+        <p><strong>Artinya:</strong> apabila unta-unta yang bunting ditinggalkan (tidak terurus),</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>وَاِذَا الْوُحُوْشُ حُشِرَتْۖ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-wuḫûsyu ḫusyirat</p>
+        <p><strong>Artinya:</strong> apabila binatang-binatang liar dikumpulkan,</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>وَاِذَا الْبِحَارُ سُجِّرَتْۖ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-biḫâru sujjirat</p>
+        <p><strong>Artinya:</strong> apabila lautan dipanaskan,</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَاِذَا النُّفُوْسُ زُوِّجَتْۖ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzan-nufûsu zuwwijat</p>
+        <p><strong>Artinya:</strong> apabila roh-roh dipertemukan (dengan tubuh),</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَاِذَا الْمَوْءٗدَةُ سُىِٕلَتْۖ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-mau'ûdatu su'ilat</p>
+        <p><strong>Artinya:</strong> apabila bayi-bayi perempuan yang dikubur hidup-hidup ditanya,</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>بِاَيِّ ذَنْۢبٍ قُتِلَتْۚ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> bi'ayyi dzambing qutilat</p>
+        <p><strong>Artinya:</strong> “Karena dosa apa dia dibunuh,”</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>وَاِذَا الصُّحُفُ نُشِرَتْۖ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzash-shuḫufu nusyirat</p>
+        <p><strong>Artinya:</strong> apabila lembaran-lembaran (catatan amal) telah dibuka lebar-lebar,</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>وَاِذَا السَّمَاۤءُ كُشِطَتْۖ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzas-samâ'u kusyithat</p>
+        <p><strong>Artinya:</strong> apabila langit dilenyapkan,</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>وَاِذَا الْجَحِيْمُ سُعِّرَتْۖ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-jaḫîmu su‘‘irat</p>
+        <p><strong>Artinya:</strong> apabila (neraka) Jahim dinyalakan,</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>وَاِذَا الْجَنَّةُ اُزْلِفَتْۖ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa idzal-jannatu uzlifat</p>
+        <p><strong>Artinya:</strong> dan apabila surga didekatkan,</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>عَلِمَتْ نَفْسٌ مَّآ اَحْضَرَتْۗ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘alimat nafsum mâ aḫdlarat</p>
+        <p><strong>Artinya:</strong> setiap jiwa akan mengetahui apa yang telah dikerjakannya.</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>فَلَآ اُقْسِمُ بِالْخُنَّسِۙ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa lâ uqsimu bil-khunnas</p>
+        <p><strong>Artinya:</strong> Aku bersumpah demi bintang-bintang</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>الْجَوَارِ الْكُنَّسِۙ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> al-jawâril-kunnas</p>
+        <p><strong>Artinya:</strong> yang beredar lagi terbenam,</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>وَالَّيْلِ اِذَا عَسْعَسَۙ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wal-laili idzâ ‘as‘as</p>
+        <p><strong>Artinya:</strong> demi malam apabila telah larut,</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>وَالصُّبْحِ اِذَا تَنَفَّسَۙ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wash-shub-ḫi idzâ tanaffas</p>
+        <p><strong>Artinya:</strong> demi subuh apabila (fajar) telah menyingsing,</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>اِنَّهٗ لَقَوْلُ رَسُوْلٍ كَرِيْمٍۙ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> innahû laqaulu rasûling karîm</p>
+        <p><strong>Artinya:</strong> sesungguhnya (Al-Qur’an) itu benar-benar firman (Allah yang dibawa oleh) utusan yang mulia (Jibril)</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>ذِيْ قُوَّةٍ عِنْدَ ذِى الْعَرْشِ مَكِيْنٍۙ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> dzî quwwatin ‘inda dzil-‘arsyi makîn</p>
+        <p><strong>Artinya:</strong> yang memiliki kekuatan dan kedudukan tinggi di sisi (Allah) yang memiliki ʻArasy,</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>مُّطَاعٍ ثَمَّ اَمِيْنٍۗ ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> muthâ‘in tsamma amîn</p>
+        <p><strong>Artinya:</strong> yang di sana (Jibril) ditaati lagi dipercaya.</p>
+        <br>
+
+        <!-- Ayat 22 -->
+        <h2 class="text-end"><strong>وَمَا صَاحِبُكُمْ بِمَجْنُوْنٍۚ ۝٢٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ shâḫibukum bimajnûn</p>
+        <p><strong>Artinya:</strong> Temanmu (Nabi Muhammad) itu bukanlah orang gila.</p>
+        <br>
+
+        <!-- Ayat 23 -->
+        <h2 class="text-end"><strong>وَلَقَدْ رَاٰهُ بِالْاُفُقِ الْمُبِيْنِۚ ۝٢٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa laqad ra'âhu bil-ufuqil-mubîn</p>
+        <p><strong>Artinya:</strong> Sungguh, dia (Nabi Muhammad) benar-benar telah melihatnya (Jibril) di ufuk yang terang.</p>
+        <br>
+
+        <!-- Ayat 24 -->
+        <h2 class="text-end"><strong>وَمَا هُوَ عَلَى الْغَيْبِ بِضَنِيْنٍۚ ۝٢٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ huwa ‘alal-ghaibi bidlanîn</p>
+        <p><strong>Artinya:</strong> Dia (Nabi Muhammad) bukanlah seorang yang kikir (enggan) untuk menerangkan yang gaib.</p>
+        <br>
+
+        <!-- Ayat 25 -->
+        <h2 class="text-end"><strong>وَمَا هُوَ بِقَوْلِ شَيْطٰنٍ رَّجِيْمٍۚ ۝٢٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ huwa biqauli syaithânir rajîm</p>
+        <p><strong>Artinya:</strong> (Al-Qur’an) itu bukanlah perkataan setan yang terkutuk.</p>
+        <br>
+
+        <!-- Ayat 26 -->
+        <h2 class="text-end"><strong>فَاَيْنَ تَذْهَبُوْنَۗ ۝٢٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa aina tadz-habûn</p>
+        <p><strong>Artinya:</strong> Maka, ke manakah kamu akan pergi?</p>
+        <br>
+
+        <!-- Ayat 27 -->
+        <h2 class="text-end"><strong>اِنْ هُوَ اِلَّا ذِكْرٌ لِّلْعٰلَمِيْنَۙ ۝٢٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> in huwa illâ dzikrul lil-‘âlamîn</p>
+        <p><strong>Artinya:</strong> (Al-Qur’an) itu tidak lain, kecuali peringatan bagi semesta alam,</p>
+        <br>
+
+        <!-- Ayat 28 -->
+        <h2 class="text-end"><strong>لِمَنْ شَاۤءَ مِنْكُمْ اَنْ يَّسْتَقِيْمَۗ ۝٢٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> liman syâ'a mingkum ay yastaqîm</p>
+        <p><strong>Artinya:</strong> (yaitu) bagi siapa di antaramu yang hendak menempuh jalan yang lurus.</p>
+        <br>
+
+        <!-- Ayat 29 -->
+        <h2 class="text-end"><strong>وَمَا تَشَاۤءُوْنَ اِلَّآ اَنْ يَّشَاۤءَ اللّٰهُ رَبُّ الْعٰلَمِيْنَࣖ ۝٢٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ tasyâ'ûna illâ ay yasyâ'allâhu rabbul-‘âlamîn</p>
+        <p><strong>Artinya:</strong> Kamu tidak dapat berkehendak, kecuali apabila dikehendaki Allah, Tuhan semesta alam.</p>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat 'Abasa</h5>
+    </div>
+    <div class="card-body">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>عَبَسَ وَتَوَلّٰىٓۙ ۝١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ‘abasa wa tawallâ</p>
+        <p><strong>Artinya:</strong> Dia (Nabi Muhammad) berwajah masam dan berpaling</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>اَنْ جَاۤءَهُ الْاَعْمٰىۗ ۝٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> an jâ'ahul-a‘mâ</p>
+        <p><strong>Artinya:</strong> karena seorang tunanetra (Abdullah bin Ummi Maktum) telah datang kepadanya.</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَمَا يُدْرِيْكَ لَعَلَّهٗ يَزَّكّٰىٓۙ ۝٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ yudrîka la‘allahû yazzakkâ</p>
+        <p><strong>Artinya:</strong> Tahukah engkau (Nabi Muhammad) boleh jadi dia ingin menyucikan dirinya (dari dosa)</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>اَوْ يَذَّكَّرُ فَتَنْفَعَهُ الذِّكْرٰىۗ ۝٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> au yadzdzakkaru fa tanfa‘ahudz-dzikrâ</p>
+        <p><strong>Artinya:</strong> atau dia (ingin) mendapatkan pengajaran sehingga pengajaran itu bermanfaat baginya?</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>اَمَّا مَنِ اسْتَغْنٰىۙ ۝٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ammâ manistaghnâ</p>
+        <p><strong>Artinya:</strong> Adapun orang yang merasa dirinya serba cukup (para pembesar Quraisy),</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>فَاَنْتَ لَهٗ تَصَدّٰىۗ ۝٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa anta lahû tashaddâ</p>
+        <p><strong>Artinya:</strong> engkau (Nabi Muhammad) memberi perhatian kepadanya.</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>وَمَا عَلَيْكَ اَلَّا يَزَّكّٰىۗ ۝٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa mâ ‘alaika allâ yazzakkâ</p>
+        <p><strong>Artinya:</strong> Padahal, tidak ada (cela) atasmu kalau dia tidak menyucikan diri (beriman).</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>وَاَمَّا مَنْ جَاۤءَكَ يَسْعٰىۙ ۝٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ammâ man jâ'aka yas‘â</p>
+        <p><strong>Artinya:</strong> Adapun orang yang datang kepadamu dengan bersegera (untuk mendapatkan pengajaran),</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>وَهُوَ يَخْشٰىۙ ۝٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa huwa yakhsyâ</p>
+        <p><strong>Artinya:</strong> sedangkan dia takut (kepada Allah),</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>فَاَنْتَ عَنْهُ تَلَهّٰىۚ ۝١٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa anta ‘an-hu talahhâ</p>
+        <p><strong>Artinya:</strong> malah engkau (Nabi Muhammad) abaikan.</p>
+        <br>
+
+        <!-- Ayat 11 -->
+        <h2 class="text-end"><strong>كَلَّآ اِنَّهَا تَذْكِرَةٌۚ ۝١١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ innahâ tadzkirah</p>
+        <p><strong>Artinya:</strong> Sekali-kali jangan (begitu)! Sesungguhnya (ajaran Allah) itu merupakan peringatan.</p>
+        <br>
+
+        <!-- Ayat 12 -->
+        <h2 class="text-end"><strong>فَمَنْ شَاۤءَ ذَكَرَهٗۘ ۝١٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa man syâ'a dzakarah</p>
+        <p><strong>Artinya:</strong> Siapa yang menghendaki tentulah akan memperhatikannya</p>
+        <br>
+
+        <!-- Ayat 13 -->
+        <h2 class="text-end"><strong>فِيْ صُحُفٍ مُّكَرَّمَةٍۙ ۝١٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fî shuḫufim mukarramah</p>
+        <p><strong>Artinya:</strong> di dalam suhuf yang dimuliakan (di sisi Allah),</p>
+        <br>
+
+        <!-- Ayat 14 -->
+        <h2 class="text-end"><strong>مَّرْفُوْعَةٍ مُّطَهَّرَةٍ ۢۙ ۝١٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> marfû‘atim muthahharah</p>
+        <p><strong>Artinya:</strong> yang ditinggikan (kedudukannya) lagi disucikan</p>
+        <br>
+
+        <!-- Ayat 15 -->
+        <h2 class="text-end"><strong>بِاَيْدِيْ سَفَرَةٍۙ ۝١٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> bi'aidî safarah</p>
+        <p><strong>Artinya:</strong> di tangan para utusan (malaikat)</p>
+        <br>
+
+        <!-- Ayat 16 -->
+        <h2 class="text-end"><strong>كِرَامٍ ۢ بَرَرَةٍۗ ۝١٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kirâmim bararah</p>
+        <p><strong>Artinya:</strong> yang mulia lagi berbudi.</p>
+        <br>
+
+        <!-- Ayat 17 -->
+        <h2 class="text-end"><strong>قُتِلَ الْاِنْسَانُ مَآ اَكْفَرَهٗۗ ۝١٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> qutilal-insânu mâ akfarah</p>
+        <p><strong>Artinya:</strong> Celakalah manusia! Alangkah kufur dia!</p>
+        <br>
+
+        <!-- Ayat 18 -->
+        <h2 class="text-end"><strong>مِنْ اَيِّ شَيْءٍ خَلَقَهٗۗ ۝١٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> min ayyi syai'in khalaqah</p>
+        <p><strong>Artinya:</strong> Dari apakah Dia menciptakannya?</p>
+        <br>
+
+        <!-- Ayat 19 -->
+        <h2 class="text-end"><strong>مِنْ نُّطْفَةٍۗ خَلَقَهٗ فَقَدَّرَهٗۗ ۝١٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> min nuthfah, khalaqahû fa qaddarah</p>
+        <p><strong>Artinya:</strong> Dia menciptakannya dari setetes mani, lalu menentukan (takdir)-nya.</p>
+        <br>
+
+        <!-- Ayat 20 -->
+        <h2 class="text-end"><strong>ثُمَّ السَّبِيْلَ يَسَّرَهٗۙ ۝٢٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsummas-sabîla yassarah</p>
+        <p><strong>Artinya:</strong> Kemudian, jalannya Dia mudahkan.</p>
+        <br>
+
+        <!-- Ayat 21 -->
+        <h2 class="text-end"><strong>ثُمَّ اَمَاتَهٗ فَاَقْبَرَهٗۙ ۝٢١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma amâtahû fa aqbarah</p>
+        <p><strong>Artinya:</strong> Kemudian, Dia mematikannya lalu menguburkannya.</p>
+        <br>
+
+        <!-- Ayat 22 -->
+        <h2 class="text-end"><strong>ثُمَّ اِذَا شَاۤءَ اَنْشَرَهٗۗ ۝٢٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma idzâ syâ'a ansyarah</p>
+        <p><strong>Artinya:</strong> Kemudian, jika menghendaki, Dia membangkitkannya kembali.</p>
+        <br>
+
+        <!-- Ayat 23 -->
+        <h2 class="text-end"><strong>كَلَّا لَمَّا يَقْضِ مَآ اَمَرَهٗۗ ۝٢٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> kallâ lammâ yaqdli mâ amarah</p>
+        <p><strong>Artinya:</strong> Sekali-kali jangan (begitu)! Dia (manusia) itu belum melaksanakan apa yang Dia (Allah) perintahkan kepadanya.</p>
+        <br>
+
+        <!-- Ayat 24 -->
+        <h2 class="text-end"><strong>فَلْيَنْظُرِ الْاِنْسَانُ اِلٰى طَعَامِهٖٓۙ ۝٢٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> falyandhuril-insânu ilâ tha‘âmih</p>
+        <p><strong>Artinya:</strong> Maka, hendaklah manusia itu memperhatikan makanannya.</p>
+        <br>
+
+        <!-- Ayat 25 -->
+        <h2 class="text-end"><strong>اَنَّا صَبَبْنَا الْمَاۤءَ صَبًّاۙ ۝٢٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> annâ shababnal-mâ'a shabbâ</p>
+        <p><strong>Artinya:</strong> Sesungguhnya Kami telah mencurahkan air (dari langit) dengan berlimpah.</p>
+        <br>
+
+        <!-- Ayat 26 -->
+        <h2 class="text-end"><strong>ثُمَّ شَقَقْنَا الْاَرْضَ شَقًّاۙ ۝٢٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tsumma syaqaqnal-ardla syaqqâ</p>
+        <p><strong>Artinya:</strong> Kemudian, Kami belah bumi dengan sebaik-baiknya.</p>
+        <br>
+
+        <!-- Ayat 27 -->
+        <h2 class="text-end"><strong>فَاَنْۢبَتْنَا فِيْهَا حَبًّاۙ ۝٢٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa ambatnâ fîhâ ḫabbâ</p>
+        <p><strong>Artinya:</strong> Lalu, Kami tumbuhkan padanya biji-bijian,</p>
+        <br>
+
+        <!-- Ayat 28 -->
+        <h2 class="text-end"><strong>وَّعِنَبًا وَّقَضْبًاۙ ۝٢٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ‘inabaw wa qadlbâ</p>
+        <p><strong>Artinya:</strong> anggur, sayur-sayuran,</p>
+        <br>
+
+        <!-- Ayat 29 -->
+        <h2 class="text-end"><strong>وَّزَيْتُوْنًا وَّنَخْلًاۙ ۝٢٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa zaitûnaw wa nakhlâ</p>
+        <p><strong>Artinya:</strong> zaitun, pohon kurma,</p>
+        <br>
+
+        <!-- Ayat 30 -->
+        <h2 class="text-end"><strong>وَّحَدَاۤئِقَ غُلْبًا ۝٣٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ḫadâ'iqa ghulbâ</p>
+        <p><strong>Artinya:</strong> kebun-kebun (yang) rindang,</p>
+        <br>
+
+        <!-- Ayat 31 -->
+        <h2 class="text-end"><strong>وَفَاكِهَةً وَّاَبًّا ۝٣١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa fâkihataw wa abbâ</p>
+        <p><strong>Artinya:</strong> buah-buahan, dan rerumputan.</p>
+        <br>
+
+        <!-- Ayat 32 -->
+        <h2 class="text-end"><strong>مَتَاعًا لَّكُمْ وَلِاَنْعَامِكُمْۗ ۝٣٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> matâ‘al lakum wa li'an‘âmikum</p>
+        <p><strong>Artinya:</strong> (Semua itu disediakan) untuk kesenanganmu dan hewan-hewan ternakmu.</p>
+        <br>
+
+        <!-- Ayat 33 -->
+        <h2 class="text-end"><strong>فَاِذَا جَاۤءَتِ الصَّاۤخَّةُۖ ۝٣٣</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> fa idzâ jâ'atish-shâkhkhah</p>
+        <p><strong>Artinya:</strong> Maka, apabila datang suara yang memekakkan (dari tiupan sangkakala),</p>
+        <br>
+
+        <!-- Ayat 34 -->
+        <h2 class="text-end"><strong>يَوْمَ يَفِرُّ الْمَرْءُ مِنْ اَخِيْهِۙ ۝٣٤</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> yauma yafirrul-mar'u min akhîh</p>
+        <p><strong>Artinya:</strong> pada hari itu manusia lari dari saudaranya,</p>
+        <br>
+
+        <!-- Ayat 35 -->
+        <h2 class="text-end"><strong>وَاُمِّهٖ وَاَبِيْهِۙ ۝٣٥</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa ummihî wa abîh</p>
+        <p><strong>Artinya:</strong> (dari) ibu dan bapaknya,</p>
+        <br>
+
+        <!-- Ayat 36 -->
+        <h2 class="text-end"><strong>وَصَاحِبَتِهٖ وَبَنِيْهِۗ ۝٣٦</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa shâḫibatihî wa banîh</p>
+        <p><strong>Artinya:</strong> serta (dari) istri dan anak-anaknya.</p>
+        <br>
+
+        <!-- Ayat 37 -->
+        <h2 class="text-end"><strong>لِكُلِّ امْرِئٍ مِّنْهُمْ يَوْمَىِٕذٍ شَأْنٌ يُّغْنِيْهِۗ ۝٣٧</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> likullimri'im min-hum yauma'idzin sya'nuy yughnîh</p>
+        <p><strong>Artinya:</strong> Setiap orang dari mereka pada hari itu mempunyai urusan yang menyibukkannya.</p>
+        <br>
+
+        <!-- Ayat 38 -->
+        <h2 class="text-end"><strong>وُجُوْهٌ يَّوْمَىِٕذٍ مُّسْفِرَةٌۙ ۝٣٨</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wujûhuy yauma'idzim musfirah</p>
+        <p><strong>Artinya:</strong> Pada hari itu ada wajah-wajah yang berseri-seri,</p>
+        <br>
+
+        <!-- Ayat 39 -->
+        <h2 class="text-end"><strong>ضَاحِكَةٌ مُّسْتَبْشِرَةٌۚ ۝٣٩</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> dlâḫikatum mustabsyirah</p>
+        <p><strong>Artinya:</strong> tertawa lagi gembira ria.</p>
+        <br>
+
+        <!-- Ayat 40 -->
+        <h2 class="text-end"><strong>وَوُجُوْهٌ يَّوْمَىِٕذٍ عَلَيْهَا غَبَرَةٌۙ ۝٤٠</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> wa wujûhuy yauma'idzin ‘alaihâ ghabarah</p>
+        <p><strong>Artinya:</strong> Pada hari itu ada (pula) wajah-wajah yang tertutup debu (suram)</p>
+        <br>
+
+        <!-- Ayat 41 -->
+        <h2 class="text-end"><strong>تَرْهَقُهَا قَتَرَةٌۗ ۝٤١</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> tarhaquhâ qatarah</p>
+        <p><strong>Artinya:</strong> dan tertutup oleh kegelapan (ditimpa kehinaan dan kesusahan).</p>
+        <br>
+
+        <!-- Ayat 42 -->
+        <h2 class="text-end"><strong>اُولٰۤىِٕكَ هُمُ الْكَفَرَةُ الْفَجَرَةُࣖ ۝٤٢</strong></h2>
+        <br>
+        <p><strong>Latin:</strong> ulâ'ika humul-kafaratul-fajarah</p>
+        <p><strong>Artinya:</strong> Mereka itulah orang-orang kafir lagi para pendurhaka.</p>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat An-Naziat</h5>
+    </div>
+    <div class="card-body">
+
+    <div class="ayat">
+        <!-- Ayat 1 -->
+        <h2 class="text-end"><strong>وَالنّٰزِعٰتِ غَرْقًاۙ ۝١</strong></h2>
+        <p><strong>Latin:</strong> wan-nâzi‘âti gharqâ</p>
+        <p><strong>Artinya:</strong> Demi (malaikat) yang mencabut (nyawa orang kafir) dengan keras,</p>
+        <br>
+
+        <!-- Ayat 2 -->
+        <h2 class="text-end"><strong>وَّالنّٰشِطٰتِ نَشْطًاۙ ۝٢</strong></h2>
+        <p><strong>Latin:</strong> wan-nâsyithâti nasythâ</p>
+        <p><strong>Artinya:</strong> demi (malaikat) yang mencabut (nyawa orang mukmin) dengan lemah lembut,</p>
+        <br>
+
+        <!-- Ayat 3 -->
+        <h2 class="text-end"><strong>وَّالسّٰبِحٰتِ سَبْحًاۙ ۝٣</strong></h2>
+        <p><strong>Latin:</strong> was-sâbiḫâti sab-ḫâ</p>
+        <p><strong>Artinya:</strong> demi (malaikat) yang cepat (menunaikan tugasnya) dengan mudah,</p>
+        <br>
+
+        <!-- Ayat 4 -->
+        <h2 class="text-end"><strong>فَالسّٰبِقٰتِ سَبْقًاۙ ۝٤</strong></h2>
+        <p><strong>Latin:</strong> fas-sâbiqâti sabqâ</p>
+        <p><strong>Artinya:</strong> (malaikat) yang bergegas (melaksanakan perintah Allah) dengan cepat,</p>
+        <br>
+
+        <!-- Ayat 5 -->
+        <h2 class="text-end"><strong>فَالْمُدَبِّرٰتِ اَمْرًاۘ ۝٥</strong></h2>
+        <p><strong>Latin:</strong> fal-mudabbirâti amrâ</p>
+        <p><strong>Artinya:</strong> dan (malaikat) yang mengatur urusan (dunia),</p>
+        <br>
+
+        <!-- Ayat 6 -->
+        <h2 class="text-end"><strong>يَوْمَ تَرْجُفُ الرَّاجِفَةُۙ ۝٦</strong></h2>
+        <p><strong>Latin:</strong> yauma tarjufur-râjifah</p>
+        <p><strong>Artinya:</strong> (kamu benar-benar akan dibangkitkan) pada hari ketika tiupan pertama mengguncang (alam semesta).</p>
+        <br>
+
+        <!-- Ayat 7 -->
+        <h2 class="text-end"><strong>تَتْبَعُهَا الرَّادِفَةُۗ ۝٧</strong></h2>
+        <p><strong>Latin:</strong> tatba‘uhar-râdifah</p>
+        <p><strong>Artinya:</strong> (Tiupan pertama) itu diiringi oleh tiupan kedua.</p>
+        <br>
+
+        <!-- Ayat 8 -->
+        <h2 class="text-end"><strong>قُلُوْبٌ يَّوْمَىِٕذٍ وَّاجِفَةٌۙ ۝٨</strong></h2>
+        <p><strong>Latin:</strong> qulûbuy yauma'idziw wâjifah</p>
+        <p><strong>Artinya:</strong> Hati manusia pada hari itu merasa sangat takut;</p>
+        <br>
+
+        <!-- Ayat 9 -->
+        <h2 class="text-end"><strong>اَبْصَارُهَا خَاشِعَةٌۘ ۝٩</strong></h2>
+        <p><strong>Latin:</strong> abshâruhâ khâsyi‘ah</p>
+        <p><strong>Artinya:</strong> pandangannya tertunduk.</p>
+        <br>
+
+        <!-- Ayat 10 -->
+        <h2 class="text-end"><strong>يَقُوْلُوْنَ ءَاِنَّا لَمَرْدُوْدُوْنَ فِى الْحَافِرَةِۗ ۝١٠</strong></h2>
+        <p><strong>Latin:</strong> yaqûlûna a innâ lamardûdûna fil-ḫâfirah</p>
+        <p><strong>Artinya:</strong> Mereka (di dunia) berkata, “Apakah kita benar-benar akan dikembalikan pada kehidupan yang semula?</p>
+        <br>
+
+                <!-- Ayat 11 -->
+                <h2 class="text-end"><strong>ءَاِذَا كُنَّا عِظَامًا نَّخِرَةًۗ ۝١١</strong></h2>
+                <p><strong>Latin:</strong> a idzâ kunnâ ‘idhâman nakhirah</p>
+                <p><strong>Artinya:</strong> Apabila kita telah menjadi tulang-belulang yang hancur, apakah kita (akan dibangkitkan juga)?</p>
+                <br>
+        
+                <!-- Ayat 12 -->
+                <h2 class="text-end"><strong>قَالُوْا تِلْكَ اِذًا كَرَّةٌ خَاسِرَةٌۘ ۝١٢</strong></h2>
+                <p><strong>Latin:</strong> qâlû tilka idzang karratun khâsirah</p>
+                <p><strong>Artinya:</strong> Mereka berkata, “Kalau demikian, itu suatu pengembalian yang merugikan.”</p>
+                <br>
+        
+                <!-- Ayat 13 -->
+                <h2 class="text-end"><strong>فَاِنَّمَا هِيَ زَجْرَةٌ وَّاحِدَةٌۙ ۝١٣</strong></h2>
+                <p><strong>Latin:</strong> fa innamâ hiya zajratuw wâḫidah</p>
+                <p><strong>Artinya:</strong> (Jangan dianggap sulit,) pengembalian itu (dilakukan) hanyalah dengan sekali tiupan.</p>
+                <br>
+        
+                <!-- Ayat 14 -->
+                <h2 class="text-end"><strong>فَاِذَا هُمْ بِالسَّاهِرَةِۗ ۝١٤</strong></h2>
+                <p><strong>Latin:</strong> fa idzâ hum bis-sâhirah</p>
+                <p><strong>Artinya:</strong> Seketika itu, mereka hidup kembali di bumi (yang baru).</p>
+                <br>
+        
+                <!-- Ayat 15 -->
+                <h2 class="text-end"><strong>هَلْ اَتٰىكَ حَدِيْثُ مُوْسٰىۘ ۝١٥</strong></h2>
+                <p><strong>Latin:</strong> hal atâka ḫadîtsu mûsâ</p>
+                <p><strong>Artinya:</strong> Sudah sampaikah kepadamu (Nabi Muhammad) kisah Musa?</p>
+                <br>
+        
+                <!-- Ayat 16 -->
+                <h2 class="text-end"><strong>اِذْ نَادٰىهُ رَبُّهٗ بِالْوَادِ الْمُقَدَّسِ طُوًىۚ ۝١٦</strong></h2>
+                <p><strong>Latin:</strong> idz nâdâhu rabbuhû bil-wâdil-muqaddasi thuwâ</p>
+                <p><strong>Artinya:</strong> (Ingatlah) ketika Tuhannya menyeru dia (Musa) di lembah suci, yaitu Lembah Tuwa,</p>
+                <br>
+        
+                <!-- Ayat 17 -->
+                <h2 class="text-end"><strong>اِذْهَبْ اِلٰى فِرْعَوْنَ اِنَّهٗ طَغٰىۖ ۝١٧</strong></h2>
+                <p><strong>Latin:</strong> idz-hab ilâ fir‘auna innahû thaghâ</p>
+                <p><strong>Artinya:</strong> “Pergilah engkau kepada Fir‘aun! Sesungguhnya dia telah melampaui batas.</p>
+                <br>
+        
+                <!-- Ayat 18 -->
+                <h2 class="text-end"><strong>فَقُلْ هَلْ لَّكَ اِلٰٓى اَنْ تَزَكّٰىۙ ۝١٨</strong></h2>
+                <p><strong>Latin:</strong> fa qul hal laka ilâ an tazakkâ</p>
+                <p><strong>Artinya:</strong> Lalu, katakanlah (kepada Fir‘aun), ‘Adakah keinginanmu untuk menyucikan diri (dari kesesatan)</p>
+                <br>
+        
+                <!-- Ayat 19 -->
+                <h2 class="text-end"><strong>وَاَهْدِيَكَ اِلٰى رَبِّكَ فَتَخْشٰىۚ ۝١٩</strong></h2>
+                <p><strong>Latin:</strong> wa ahdiyaka ilâ rabbika fa takhsyâ</p>
+                <p><strong>Artinya:</strong> dan aku akan menunjukimu ke (jalan) Tuhanmu agar engkau takut (kepada-Nya)?’”</p>
+                <br>
+        
+                <!-- Ayat 20 -->
+                <h2 class="text-end"><strong>فَأَرَاهُ الْاٰيَةَ الْكُبْرٰىۖ ۝٢٠</strong></h2>
+                <p><strong>Latin:</strong> fa arâhul-âyatal-kubrâ</p>
+                <p><strong>Artinya:</strong> Lalu, dia (Musa) memperlihatkan mukjizat yang besar kepadanya.</p>
+                <br>
+        
+                <!-- Ayat 21 -->
+                <h2 class="text-end"><strong>فَكَذَّبَ وَعَصٰىۖ ۝٢١</strong></h2>
+                <p><strong>Latin:</strong> fa kadzdzaba wa ‘ashâ</p>
+                <p><strong>Artinya:</strong> Akan tetapi, dia (Fir‘aun) mendustakan (kerasulan) dan mendurhakai (Allah).</p>
+                <br>
+        
+                <!-- Ayat 22 -->
+                <h2 class="text-end"><strong>ثُمَّ اَدْبَرَ يَسْعٰىۖ ۝٢٢</strong></h2>
+                <p><strong>Latin:</strong> tsumma adbara yas‘â</p>
+                <p><strong>Artinya:</strong> Kemudian, dia berpaling seraya berusaha (menantang Musa).</p>
+                <br>
+        
+                <!-- Ayat 23 -->
+                <h2 class="text-end"><strong>فَحَشَرَ فَنَادٰىۖ ۝٢٣</strong></h2>
+                <p><strong>Latin:</strong> fa ḫasyara fa nâdâ</p>
+                <p><strong>Artinya:</strong> Maka, dia mengumpulkan (pembesar-pembesarnya), lalu berseru (memanggil kaumnya).</p>
+                <br>
+        
+                <!-- Ayat 24 -->
+                <h2 class="text-end"><strong>فَقَالَ اَنَا۠ رَبُّكُمُ الْاَعْلٰىۖ ۝٢٤</strong></h2>
+                <p><strong>Latin:</strong> fa qâla ana rabbukumul-a‘lâ</p>
+                <p><strong>Artinya:</strong> Dia berkata, “Akulah Tuhanmu yang paling tinggi.”</p>
+                <br>
+        
+                <!-- Ayat 25 -->
+                <h2 class="text-end"><strong>فَأَخَذَهُ اللّٰهُ نَكَالَ الْاٰخِرَةِ وَالْاُوْلٰىۗ ۝٢٥</strong></h2>
+                <p><strong>Latin:</strong> fa akhadzahullâhu nakâlal-âkhirati wal-ûlâ</p>
+                <p><strong>Artinya:</strong> Maka, Allah menghukumnya dengan azab di akhirat dan (siksaan) di dunia.</p>
+                <br>
+        
+                <!-- Ayat 26 -->
+                <h2 class="text-end"><strong>اِنَّ فِيْ ذٰلِكَ لَعِبْرَةً لِّمَنْ يَّخْشٰىۗࣖ ۝٢٦</strong></h2>
+                <p><strong>Latin:</strong> inna fî dzâlika la‘ibratal limay yakhsyâ</p>
+                <p><strong>Artinya:</strong> Sesungguhnya pada yang demikian itu benar-benar terdapat pelajaran bagi orang yang takut (kepada Allah).</p>
+                <br>
+        
+                <!-- Ayat 27 -->
+                <h2 class="text-end"><strong>ءَاَنْتُمْ اَشَدُّ خَلْقًا اَمِ السَّمَاۤءُۚ بَنٰىهَاۗ ۝٢٧</strong></h2>
+                <p><strong>Latin:</strong> a antum asyaddu khalqan amis-samâ', banâhâ</p>
+                <p><strong>Artinya:</strong> Apakah penciptaan kamu yang lebih hebat ataukah langit yang telah dibangun-Nya?</p>
+                <br>
+        
+                <!-- Ayat 28 -->
+                <h2 class="text-end"><strong>رَفَعَ سَمْكَهَا فَسَوّٰىهَاۙ ۝٢٨</strong></h2>
+                <p><strong>Latin:</strong> rafa‘a samkahâ fa sawwâhâ</p>
+                <p><strong>Artinya:</strong> Dia telah meninggikan bangunannya, lalu menyempurnakannya.</p>
+                <br>
+        
+                <!-- Ayat 29 -->
+                <h2 class="text-end"><strong>وَاَغْطَشَ لَيْلَهَا وَاَخْرَجَ ضُحٰىهَاۖ ۝٢٩</strong></h2>
+                <p><strong>Latin:</strong> wa aghthasya lailahâ wa akhraja dluḫâhâ</p>
+                <p><strong>Artinya:</strong> Dia menjadikan malamnya (gelap gulita) dan menjadikan siangnya (terang benderang).</p>
+                <br>
+        
+                <!-- Ayat 30 -->
+                <h2 class="text-end"><strong>وَالْاَرْضَ بَعْدَ ذٰلِكَ دَحٰىهَاۗ ۝٣٠</strong></h2>
+                <p><strong>Latin:</strong> wal-ardla ba‘da dzâlika daḫâhâ</p>
+                <p><strong>Artinya:</strong> Setelah itu, bumi Dia hamparkan (untuk dihuni).</p>
+                <br>
+        
+                <!-- Ayat 31 -->
+                <h2 class="text-end"><strong>اَخْرَجَ مِنْهَا مَاۤءَهَا وَمَرْعٰىهَاۖ ۝٣١</strong></h2>
+                <p><strong>Latin:</strong> akhraja min-hâ mâ'ahâ wa mar‘âhâ</p>
+                <p><strong>Artinya:</strong> Darinya (bumi) Dia mengeluarkan air dan (menyediakan) tempat penggembalaan.</p>
+                <br>
+        
+                <!-- Ayat 32 -->
+                <h2 class="text-end"><strong>وَالْجِبَالَ اَرْسٰىهَاۙ ۝٣٢</strong></h2>
+                <p><strong>Latin:</strong> wal-jibâla arsâhâ</p>
+                <p><strong>Artinya:</strong> Gunung-gunung Dia pancangkan dengan kukuh.</p>
+                <br>
+        
+                <!-- Ayat 33 -->
+                <h2 class="text-end"><strong>مَتَاعًا لَّكُمْ وَلِاَنْعَامِكُمْۗ ۝٣٣</strong></h2>
+                <p><strong>Latin:</strong> matâ‘al lakum wa li'an‘âmikum</p>
+                <p><strong>Artinya:</strong> (Semua itu disediakan) untuk kesenanganmu dan hewan ternakmu.</p>
+                <br>
+        
+                <!-- Ayat 34 -->
+                <h2 class="text-end"><strong>فَاِذَا جَاۤءَتِ الطَّاۤمَّةُ الْكُبْرٰىۖ ۝٣٤</strong></h2>
+                <p><strong>Latin:</strong> fa idzâ jâ'atith-thâmmatul-kubrâ</p>
+                <p><strong>Artinya:</strong> Maka, apabila malapetaka terbesar (hari Kiamat) telah datang,</p>
+                <br>
+        
+                <!-- Ayat 35 -->
+                <h2 class="text-end"><strong>يَوْمَ يَتَذَكَّرُ الْاِنْسَانُ مَا سَعٰىۙ ۝٣٥</strong></h2>
+                <p><strong>Latin:</strong> yauma yatadzakkarul-insânu mâ sa‘â</p>
+                <p><strong>Artinya:</strong> pada hari (itu) manusia teringat apa yang telah dikerjakannya</p>
+                <br>
+        
+                <!-- Ayat 36 -->
+                <h2 class="text-end"><strong>وَبُرِّزَتِ الْجَحِيْمُ لِمَنْ يَّرٰى ۝٣٦</strong></h2>
+                <p><strong>Latin:</strong> wa burrizatil-jaḫîmu limay yarâ</p>
+                <p><strong>Artinya:</strong> dan (neraka) Jahim diperlihatkan dengan jelas kepada orang yang melihat(-nya).</p>
+                <br>
+        
+                <!-- Ayat 37 -->
+                <h2 class="text-end"><strong>فَاَمَّا مَنْ طَغٰىۖ ۝٣٧</strong></h2>
+                <p><strong>Latin:</strong> fa ammâ man thaghâ</p>
+                <p><strong>Artinya:</strong> Adapun orang yang melampaui batas</p>
+                <br>
+        
+                <!-- Ayat 38 -->
+                <h2 class="text-end"><strong>وَاٰثَرَ الْحَيٰوةَ الدُّنْيَاۙ ۝٣٨</strong></h2>
+                <p><strong>Latin:</strong> wa âtsaral-ḫayâtad-dun-yâ</p>
+                <p><strong>Artinya:</strong> dan lebih mengutamakan kehidupan dunia,</p>
+                <br>
+        
+                <!-- Ayat 39 -->
+                <h2 class="text-end"><strong>فَاِنَّ الْجَحِيْمَ هِيَ الْمَأْوٰىۗ ۝٣٩</strong></h2>
+                <p><strong>Latin:</strong> fa innal-jaḫîma hiyal-ma'wâ</p>
+                <p><strong>Artinya:</strong> sesungguhnya (neraka) Jahimlah tempat tinggal(-nya).</p>
+                <br>
+        
+                <!-- Ayat 40 -->
+                <h2 class="text-end"><strong>وَاَمَّا مَنْ خَافَ مَقَامَ رَبِّهٖ وَنَهَى النَّفْسَ عَنِ الْهَوٰىۙ ۝٤٠</strong></h2>
+                <p><strong>Latin:</strong> wa ammâ man khâfa maqâma rabbihî wa nahan-nafsa ‘anil-hawâ</p>
+                <p><strong>Artinya:</strong> Adapun orang-orang yang takut pada kebesaran Tuhannya dan menahan diri dari (keinginan) hawa nafsunya,</p>
+                <br>
+        
+                <!-- Ayat 41 -->
+                <h2 class="text-end"><strong>فَاِنَّ الْجَنَّةَ هِيَ الْمَأْوٰىۗ ۝٤١</strong></h2>
+                <p><strong>Latin:</strong> fa innal-jannata hiyal-ma'wâ</p>
+                <p><strong>Artinya:</strong> sesungguhnya surgalah tempat tinggal(-nya).</p>
+                <br>
+        
+                <!-- Ayat 42 -->
+                <h2 class="text-end"><strong>يَسْـَٔلُوْنَكَ عَنِ السَّاعَةِ اَيَّانَ مُرْسٰىهَاۗ ۝٤٢</strong></h2>
+                <p><strong>Latin:</strong> yas’aluunak ‘anissâ‘ati ayânamursâhâ</p>
+                <p><strong>Artinya:</strong> Mereka bertanya kepadamu tentang kiamat, “Kapan terjadinya?”</p>
+                <br>
+        
+                <!-- Ayat 43 -->
+                <h2 class="text-end"><strong>فِيمَ اَنْتَ مِنْ ذِكْرَاهَاۚ ۝٤٣</strong></h2>
+                <p><strong>Latin:</strong> fîmâ anta min dzikriyâhâ</p>
+                <p><strong>Artinya:</strong> Kamu (Muhammad) tidaklah mengetahui (waktunya).</p>
+                <br>
+        
+                <!-- Ayat 44 -->
+                <h2 class="text-end"><strong> اِلٰ رَبِّكَ مُنْتَهَاهَاۗ ۝٤٤</strong></h2>
+                <p><strong>Latin:</strong> illâ rabbika muntahâhâ</p>
+                <p><strong>Artinya:</strong> Hanya kepada Tuhanmu-lah akhirnya (urusan) itu.</p>
+                <br>
+        
+                <!-- Ayat 45 -->
+                <h2 class="text-end"><strong> اِنَّمَا اَنْتَ مُنْذِرٌ مَّنْ يَخْشَاهَاۚ ۝٤٥</strong></h2>
+                <p><strong>Latin:</strong> innamâ anta mundhirum man yakhshâhâ</p>
+                <p><strong>Artinya:</strong> Sesungguhnya kamu hanya pemberi peringatan bagi orang yang takut (kepada kiamat).</p>
+                <br>
+        
+                <!-- Ayat 46 -->
+                <h2 class="text-end"><strong> كَأَنَّهُمْ يَوْمَ يَرَوْنَهَا لَمْ يَلْبَثُوْا اِلَّا عَشِيَّةً اَوْ ضُحَاهَاۚ ۝٤٦</strong></h2>
+                <p><strong>Latin:</strong> ka annahum yauma yarawnahâ lam yalbathu illâ ‘asyiyyatan aw ḍuḥâhâ</p>
+                <p><strong>Artinya:</strong> Seakan-akan mereka (tidak merasa lama) pada hari mereka melihatnya, (hanya tinggal) sebentar saja, seperti waktu sore atau pagi hari.</p>
+    </div>
+</div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Membaca Surat An-Naba</h5>
+    </div>
+    <div class="card-body">
+    <!-- Ayat 1 -->
+    <h2 class="text-end"><strong>عَمَّ يَتَسَاۤءَلُوْنَۚ ۝١</strong></h2>
+    <p><strong>Latin:</strong> ‘amma yatasâ'alûn</p>
+    <p><strong>Artinya:</strong> Tentang apakah mereka saling bertanya?</p>
+    <br>
+
+    <!-- Ayat 2 -->
+    <h2 class="text-end"><strong>عَنِ النَّبَاِ الْعَظِيْمِۙ ۝٢</strong></h2>
+    <p><strong>Latin:</strong> ‘anin-naba'il-‘adhîm</p>
+    <p><strong>Artinya:</strong> Tentang berita yang besar (hari Kebangkitan)</p>
+    <br>
+
+    <!-- Ayat 3 -->
+    <h2 class="text-end"><strong>الَّذِيْ هُمْ فِيْهِ مُخْتَلِفُوْنَۗ ۝٣</strong></h2>
+    <p><strong>Latin:</strong> alladzî hum fîhi mukhtalifûn</p>
+    <p><strong>Artinya:</strong> yang dalam hal itu mereka berselisih.</p>
+    <br>
+
+    <!-- Ayat 4 -->
+    <h2 class="text-end"><strong>كَلَّا سَيَعْلَمُوْنَۙ ۝٤</strong></h2>
+    <p><strong>Latin:</strong> kallâ saya‘lamûn</p>
+    <p><strong>Artinya:</strong> Sekali-kali tidak! Kelak mereka akan mengetahui.</p>
+    <br>
+
+    <!-- Ayat 5 -->
+    <h2 class="text-end"><strong>ثُمَّ كَلَّا سَيَعْلَمُوْنَ ۝٥</strong></h2>
+    <p><strong>Latin:</strong> tsumma kallâ saya‘lamûn</p>
+    <p><strong>Artinya:</strong> Sekali lagi, tidak! Kelak mereka akan mengetahui.</p>
+    <br>
+
+    <!-- Ayat 6 -->
+    <h2 class="text-end"><strong>اَلَمْ نَجْعَلِ الْاَرْضَ مِهٰدًاۙ ۝٦</strong></h2>
+    <p><strong>Latin:</strong> a lam naj‘alil-ardla mihâdâ</p>
+    <p><strong>Artinya:</strong> Bukankah Kami telah menjadikan bumi sebagai hamparan?</p>
+    <br>
+
+    <!-- Ayat 7 -->
+    <h2 class="text-end"><strong>وَّالْجِبَالَ اَوْتَادًاۖ ۝٧</strong></h2>
+    <p><strong>Latin:</strong> wal-jibâla autâdâ</p>
+    <p><strong>Artinya:</strong> dan gunung-gunung sebagai pasak?</p>
+    <br>
+
+    <!-- Ayat 8 -->
+    <h2 class="text-end"><strong>وَّخَلَقْنٰكُمْ اَزْوَاجًاۙ ۝٨</strong></h2>
+    <p><strong>Latin:</strong> wa khalaqnâkum azwâjâ</p>
+    <p><strong>Artinya:</strong> Kami menciptakan kamu berpasang-pasangan.</p>
+    <br>
+
+    <!-- Ayat 9 -->
+    <h2 class="text-end"><strong>وَّجَعَلْنَا نَوْمَكُمْ سُبَاتًاۙ ۝٩</strong></h2>
+    <p><strong>Latin:</strong> wa ja‘alnâ naumakum subâtâ</p>
+    <p><strong>Artinya:</strong> Kami menjadikan tidurmu untuk beristirahat.</p>
+    <br>
+
+    <!-- Ayat 10 -->
+    <h2 class="text-end"><strong>وَّجَعَلْنَا الَّيْلَ لِبَاسًاۙ ۝١٠</strong></h2>
+    <p><strong>Latin:</strong> wa ja‘alnal-laila libâsâ</p>
+    <p><strong>Artinya:</strong> Kami menjadikan malam sebagai pakaian.</p>
+    <br>
+
+    <!-- Ayat 11 -->
+    <h2 class="text-end"><strong>وَّجَعَلْنَا النَّهَارَ مَعَاشًاۚ ۝١١</strong></h2>
+    <p><strong>Latin:</strong> wa ja‘alnan-nahâra ma‘âsyâ</p>
+    <p><strong>Artinya:</strong> Kami menjadikan siang untuk mencari penghidupan.</p>
+    <br>
+
+    <!-- Ayat 12 -->
+    <h2 class="text-end"><strong>وَبَنَيْنَا فَوْقَكُمْ سَبْعًا شِدَادًاۙ ۝١٢</strong></h2>
+    <p><strong>Latin:</strong> wa banainâ fauqakum sab‘an syidâdâ</p>
+    <p><strong>Artinya:</strong> Kami membangun tujuh (langit) yang kukuh di atasmu.</p>
+    <br>
+
+    <!-- Ayat 13 -->
+    <h2 class="text-end"><strong>وَّجَعَلْنَا سِرَاجًا وَّهَّاجًاۖ ۝١٣</strong></h2>
+    <p><strong>Latin:</strong> wa ja‘alnâ sirâjaw wahhâjâ</p>
+    <p><strong>Artinya:</strong> Kami menjadikan pelita yang terang-benderang (matahari).</p>
+    <br>
+
+    <!-- Ayat 14 -->
+    <h2 class="text-end"><strong>وَّاَنْزَلْنَا مِنَ الْمُعْصِرٰتِ مَاۤءً ثَجَّاجًاۙ ۝١٤</strong></h2>
+    <p><strong>Latin:</strong> wa anzalnâ minal-mu‘shirâti mâ'an tsajjâjâ</p>
+    <p><strong>Artinya:</strong> Kami menurunkan dari awan air hujan yang tercurah dengan deras.</p>
+    <br>
+
+    <!-- Ayat 15 -->
+    <h2 class="text-end"><strong>لِّنُخْرِجَ بِهٖ  حَبًّا وَّنَبَاتًاۙ ۝١٥</strong></h2>
+    <p><strong>Latin:</strong> linukhrija bihî ḫabbaw wa nabâtâ</p>
+    <p><strong>Artinya:</strong> Agar Kami menumbuhkan dengannya biji-bijian, tanam-tanaman,</p>
+    <br>
+
+    <!-- Ayat 16 -->
+    <h2 class="text-end"><strong>وَّجَنّٰتٍ اَلْفَافًاۗ ۝١٦</strong></h2>
+    <p><strong>Latin:</strong> wa jannâtin alfâfâ</p>
+    <p><strong>Artinya:</strong> dan kebun-kebun yang rindang.</p>
+    <br>
+
+    <!-- Ayat 17 -->
+    <h2 class="text-end"><strong>اِنَّ يَوْمَ الْفَصْلِ كَانَ مِيْقَاتًاۙ ۝١٧</strong></h2>
+    <p><strong>Latin:</strong> inna yaumal-fashli kâna mîqâtâ</p>
+    <p><strong>Artinya:</strong> Sesungguhnya hari Keputusan itu adalah waktu yang telah ditetapkan,</p>
+    <br>
+
+    <!-- Ayat 18 -->
+    <h2 class="text-end"><strong>يَّوْمَ يُنْفَخُ فِى الصُّوْرِ فَتَأْتُوْنَ اَفْوَاجًاۙ ۝١٨</strong></h2>
+    <p><strong>Latin:</strong> yauma yunfakhu fish-shûri fa ta'tûna afwâjâ</p>
+    <p><strong>Artinya:</strong> (yaitu) hari (ketika) sangkakala ditiup, lalu kamu datang berbondong-bondong.</p>
+    <br>
+
+    <!-- Ayat 19 -->
+    <h2 class="text-end"><strong>وَّفُتِحَتِ السَّمَاۤءُ فَكَانَتْ اَبْوَابًاۙ ۝١٩</strong></h2>
+    <p><strong>Latin:</strong> wa futiḫatis-samâ'u fa kânat abwâbâ</p>
+    <p><strong>Artinya:</strong> Langit pun dibuka. Maka, terdapatlah beberapa pintu.</p>
+    <br>
+
+    <!-- Ayat 20 -->
+    <h2 class="text-end"><strong>وَّسُيِّرَتِ الْجِبَالُ فَكَانَتْ سَرَابًاۗ ۝٢٠</strong></h2>
+    <p><strong>Latin:</strong> wa suyyiratil-jibâlu fa kânat sarâbâ</p>
+    <p><strong>Artinya:</strong> Gunung-gunung pun dijalankan. Maka, ia menjadi (seperti) fatamorgana.</p>
+    <br>
+
+    <!-- Ayat 21 -->
+    <h2 class="text-end"><strong>اِنَّ جَهَنَّمَ كَانَتْ مِرْصَادًاۙ ۝٢١</strong></h2>
+    <p><strong>Latin:</strong> inna jahannama kânat mirshâdâ</p>
+    <p><strong>Artinya:</strong> Sesungguhnya (neraka) Jahanam itu (merupakan) tempat mengintai (bagi penjaga neraka).</p>
+    <br>
+
+    <!-- Ayat 22 -->
+    <h2 class="text-end"><strong>لِّلطّٰغِيْنَ مَاٰبًاۙ ۝٢٢</strong></h2>
+    <p><strong>Latin:</strong> lith-thâghîna ma'âbâ</p>
+    <p><strong>Artinya:</strong> (dan) menjadi tempat kembali bagi orang-orang yang melampaui batas.</p>
+    <br>
+
+    <!-- Ayat 23 -->
+    <h2 class="text-end"><strong>لّٰبِثِیْنَ فِیْهَآ اَحْقَابًاۚ ۝٢٣</strong></h2>
+    <p><strong>Latin:</strong> lâbitsîna fîhâ aḫqâbâ</p>
+    <p><strong>Artinya:</strong> Mereka tinggal di sana dalam masa yang lama.</p>
+    <br>
+
+    <!-- Ayat 24 -->
+    <h2 class="text-end"><strong>لَا يَذُوْقُوْنَ فِیْهَا بَرْدًا وَّلَا شَرَابًاۙ ۝٢٤</strong></h2>
+    <p><strong>Latin:</strong> lâ yadzûqûna fîhâ bardaw wa lâ syarâbâ</p>
+    <p><strong>Artinya:</strong> Mereka tidak merasakan kesejukan di dalamnya dan tidak (pula mendapat) minuman,</p>
+    <br>
+
+    <!-- Ayat 25 -->
+    <h2 class="text-end"><strong>اِلَّا حَمِيْمًا وَّغَسَّاقًاۙ ۝٢٥</strong></h2>
+    <p><strong>Latin:</strong> illâ ḫamîmaw wa ghassâqâ</p>
+    <p><strong>Artinya:</strong> selain air yang mendidih dan nanah,</p>
+    <br>
+
+    <!-- Ayat 26 -->
+    <h2 class="text-end"><strong>جَزَاۤءً وِّفَاقًاۗ ۝٢٦</strong></h2>
+    <p><strong>Latin:</strong> jazâ'aw wifâqâ</p>
+    <p><strong>Artinya:</strong> sebagai pembalasan yang setimpal.</p>
+    <br>
+
+    <!-- Ayat 27 -->
+    <h2 class="text-end"><strong>اِنَّهُمْ كَانُوْا لَا يَرْجُوْنَ حِسَابًاۙ ۝٢٧</strong></h2>
+    <p><strong>Latin:</strong> innahum kânû lâ yarjûna ḫisâbâ</p>
+    <p><strong>Artinya:</strong> Sesungguhnya mereka tidak pernah mengharapkan perhitungan.</p>
+    <br>
+
+    <!-- Ayat 28 -->
+    <h2 class="text-end"><strong>وَّكَذَّبُوْا بِاٰيٰتِنَا كِذَّابًاۗ ۝٢٨</strong></h2>
+    <p><strong>Latin:</strong> wa kadzdzabû bi'âyâtinâ kidzdzâbâ</p>
+    <p><strong>Artinya:</strong> Mereka benar-benar mendustakan ayat-ayat Kami.</p>
+    <br>
+
+    <!-- Ayat 29 -->
+    <h2 class="text-end"><strong>وَكُلَّ شَيْءٍ اَحْصَيْنٰهُ كِتٰبًاۙ ۝٢٩</strong></h2>
+    <p><strong>Latin:</strong> wa kulla syai'in aḫshainâhu kitâbâ</p>
+    <p><strong>Artinya:</strong> Segala sesuatu telah Kami catat dalam kitab (catatan amal manusia).</p>
+    <br>
+
+    <!-- Ayat 30 -->
+    <h2 class="text-end"><strong>فَذُوْقُوْا فَلَنْ نَّزِیْدَكُمْ اِلَّا عَذَابًاࣖ ۝٣٠</strong></h2>
+    <p><strong>Latin:</strong> fa dzûqû fa lan nazîdakum illâ ‘adzâbâ</p>
+    <p><strong>Artinya:</strong> Oleh karena itu, rasakanlah! Tidak akan Kami tambahkan kepadamu, kecuali azab.</p>
+    <br>
+
+    <!-- Ayat 31 -->
+    <h2 class="text-end"><strong>اِنَّ لِلْمُتَّقِیْنَ مَفَازًاۙ ۝٣١</strong></h2>
+    <p><strong>Latin:</strong> inna lil-muttaqîna mafâzâ</p>
+    <p><strong>Artinya:</strong> Sesungguhnya bagi orang-orang yang bertakwa (ada) kemenangan (surga),</p>
+    <br>
+
+    <!-- Ayat 32 -->
+    <h2 class="text-end"><strong>حَدَاۤىِٕقَ وَاَعْنَابًاۙ ۝٣٢</strong></h2>
+    <p><strong>Latin:</strong> ḫadâ'iqa wa a‘nâbâ</p>
+    <p><strong>Artinya:</strong> (yaitu) kebun-kebun, buah anggur,</p>
+    <br>
+
+    <!-- Ayat 33 -->
+    <h2 class="text-end"><strong>وَّكَوَاعِبَ اَتْرَابًاۙ ۝٣٣</strong></h2>
+    <p><strong>Latin:</strong> wa kawâ‘iba atrâbâ</p>
+    <p><strong>Artinya:</strong> gadis-gadis molek yang sebaya,</p>
+    <br>
+
+    <!-- Ayat 34 -->
+    <h2 class="text-end"><strong>وَّكَأْسًا دِهَاقًاۗ ۝٣٤</strong></h2>
+    <p><strong>Latin:</strong> wa ka'san dihâqâ</p>
+    <p><strong>Artinya:</strong> dan gelas-gelas yang penuh (berisi minuman).</p>
+    <br>
+
+    <!-- Ayat 35 -->
+    <h2 class="text-end"><strong>لَا يَسْمَعُوْنَ فِیْهَا لَغْوًا وَّلَا كِذّٰبًا ۝٣٥</strong></h2>
+    <p><strong>Latin:</strong> lâ yasma‘ûna fîhâ laghwaw wa lâ kidzdzâbâ</p>
+    <p><strong>Artinya:</strong> Di sana mereka tidak mendengar percakapan yang sia-sia dan tidak pula (perkataan) dusta.</p>
+    <br>
+
+    <!-- Ayat 36 -->
+    <h2 class="text-end"><strong>جَزَاۤءً مِّنْ رَّبِّكَ عَطَاۤءً حِسَابًاۙ ۝٣٦</strong></h2>
+    <p><strong>Latin:</strong> jazâ'am mir rabbika ‘athâ'an ḫisâbâ</p>
+    <p><strong>Artinya:</strong> (Hal itu) sebagai balasan (dan) pemberian yang banyak dari Tuhanmu,</p>
+    <br>
+
+    <!-- Ayat 37 -->
+    <h2 class="text-end"><strong>رَّبِّ السَّمٰوٰتِ وَالْاَرْضِ وَمَا بَيْنَهُمَا الرَّحْمٰنُ لَا يَمْلِكُوْنَ لَهُ قِيْوَانًاۗ ۝٣٧</strong></h2>
+    <p><strong>Latin:</strong> rabbi as-samâwâti wal-ardhi wamâ bainahumâ ar-rahmânu lâ yamlikûna lahu qiywâ</p>
+    <p><strong>Artinya:</strong> Tuhan (yang memelihara) langit dan bumi serta apa yang ada di antara keduanya, (mereka) tidak mampu berbicara di hadapan-Nya.</p>
+    <br>
+
+    <!-- Ayat 38 -->
+    <h2 class="text-end"><strong>يَوْمَ يَقُوْمُ الرُّوْحُ وَالْمَلَائِكَةُ صَفًّا لَا يَتَكَلَّمُوْنَ اِلَّا مَنْ اَذِنَ لَهُ الرَّحْمٰنُ وَقَالَ صَوَابًاۚ ۝٣٨</strong></h2>
+    <p><strong>Latin:</strong> yauma yaqûmul-rûḥu wal-malâ'ikatu saffâ, lâ yatakal lamûna illâ man aẓina lahu ar-rahmânu wa qâlâ ṣawâbâ</p>
+    <p><strong>Artinya:</strong> (yaitu) pada hari ketika Ruh dan para malaikat berdiri bersaf-saf, mereka tidak berbicara, kecuali siapa yang diizinkan oleh Tuhan Yang Maha Pengasih, dan ia berkata benar.</p>
+    <br>
+
+    <!-- Ayat 39 -->
+    <h2 class="text-end"><strong>ذٰلِكَ الْيَوْمُ اَلْقَاعَةُ ۝٣٩</strong></h2>
+    <p><strong>Latin:</strong> dzâlika yaumal qâ‘ah</p>
+    <p><strong>Artinya:</strong> Itulah hari yang pasti berlaku pada masa yang akan datang.</p>
+    <br>
+
+    <!-- Ayat 40 -->
+    <h2 class="text-end"><strong>اِنَّآ اَنْذَرْنٰكُمْ عَذَابًا قَرِيْبًا ەۙ يَّوْمَ يَنْظُرُ الْمَرْءُ مَا قَدَّمَتْ يَدَاهُ وَيَقُوْلُ الْكٰفِرُ يٰلَيْتَنِيْ كُنْتُ تُرٰبًاࣖ ۝٤٠</strong></h2>
+        <p><strong>Latin:</strong> innâ andzarnâkum ‘adzâbang qarîbay yauma yandhurul-mar'u mâ qaddamat yadâhu wa yaqûlul-kâfiru yâ laitanî kuntu turâbâ</p>
+    <p><strong>Artinya:</strong> Sesungguhnya Kami telah memperingatkan kamu akan azab yang dekat pada hari (ketika) manusia melihat apa yang telah diperbuat oleh kedua tangannya dan orang kafir berkata, “Oh, seandainya saja aku menjadi tanah".</p>
+    <br>
+
+</div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById('darkModeToggle').onclick = function() {
+    document.body.classList.toggle('dark-mode');
+}
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+}
+</script>
+</body>
+</html>

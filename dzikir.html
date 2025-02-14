@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      body {
+          background-image: url('img/bg.png'); 
+          background-size: cover; 
+          background-position: center; 
+          background-repeat: no-repeat; 
+          font-family: 'Arial', sans-serif;
+      }
+      .sidebar {
+          width: 300px;
+          background-color: #a9bd83;
+          color: white;
+          min-height: 100vh;
+          padding: 1rem;
+          transition: all 0.3s;
+          box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+          position: sticky;
+          top: 0;
+      }
+      .sidebar a {
+          color: white;
+          text-decoration: none;
+          padding: 0.8rem;
+          display: block;
+          border-radius: 4px;
+          transition: background 0.3s;
+      }
+      .sidebar a:hover {
+          background-color: #fef6bf;
+      }
+
+      .card-header {
+          background-color: #fef6bf;
+      }
+      .card {
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .card img {
+          max-width: 100%;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 4px;
+      }
+      .footer {
+          text-align: center;
+          margin-top: 2rem;
+          padding: 1rem;
+          background-color: #264653;
+          color: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .navbar {
+          background-color: #a9bd83;
+      }
+      .navbar-brand {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-weight: bold;
+          color: white;
+      }
+      .btn-outline-secondary {
+          color: #264653;
+          border-color: #264653;
+      }
+      .btn-outline-secondary:hover {
+          background-color: #264653;
+          color: white;
+      }
+      /* Islamic pattern background */
+      .container-fluid {
+          background-image: url('https://www.w3schools.com/w3images/geometry.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      .dark-mode {
+          background-color: #121212;
+          color: #ffffff;
+          background-image: url('darkbg.jpg'); 
+      }
+      .dark-mode .card, .dark-mode .footer, .dark-mode .navbar, .dark-mode .sidebar {
+          background-color: #1c1c1c;
+      }
+      .dark-mode .card-header {
+          background-color: #2c2c2c;
+      }
+      .dark-mode .btn-outline-secondary {
+          color: #ffffff;
+          border-color: #ffffff;
+      }
+      .dark-mode .btn-outline-secondary:hover {
+          background-color: #ffffff;
+          color: #121212;
+      }
+      @media (max-width: 768px) {
+          .sidebar {
+              display: none; /* Hide sidebar by default on smaller screens */
+          }
+          .sidebar.active {
+              display: block; /* Show sidebar when active */
+          }
+          .container-fluid {
+              padding: 1rem;
+          }
+          .d-md-none {
+              display: block;
+          }
+      }
+
+  </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="sidebar flex-shrink-0">
+          <header class="text-center mb-4">
+              <h3>Home</h3>
+          </header>
+          <ul class="list-unstyled">
+              <li>
+                  <a href="home.html">
+                      <i class="fa-solid fa-kaaba"></i> Sholat Wajib
+                  </a>
+              </li>    
+              <li>
+                  <a href="sunnah.html">
+                      <i class="fas fa-mosque"> </i> Sholat Sunnah
+                  </a>
+              </li>        
+              <li>
+                  <a href="ibadahtracker.html">
+                      <i class="fa-solid fa-book-quran"></i> Ibadah Tracker
+                  </a>
+              </li> 
+              <li>
+                  <a href="quote.html">
+                      <i class="fa-solid fa-quote-right"></i> Quotes Islami
+                  </a>
+              </li>                 
+              <li>
+                  <a href="about.html">
+                      <i class="fa-solid fa-address-card"></i> About Us
+                  </a>
+              </li>        
+          
+          </ul>
+          <div class="mt-auto text-center">
+              <button class="btn  btn-sm"><a href="index.html" class="text-white text-decoration-none">Logout</a></button>
+          </div>
+          
+      </nav>
+        <!-- Main Content -->
+        <div class="container-fluid p-4">
+            <header class="d-flex justify-content-between align-items-center mb-4">
+              <button class="btn btn-outline-secondary d-md-none" onclick="toggleSidebar()">☰</button>
+              <h1>Dzikir Setelah Sholat</h1>
+              <button id="darkModeToggle" class="btn btn-dark">Dark Mode</button>
+
+            </header>
+      
+            <!-- Card for Book Details -->
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Membaca Istighfar 3x</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>اَسْتَغْفِرُ اللهَ الْعَظِيْمَ</strong> </h2>
+                <br>
+                <strong>Latin:</strong> Astagfirullahaladzim
+              </p>
+                <p><strong>Artinya:</strong> "Aku memohon ampun kepada Allah Yang Maha Agung."</p>
+              </div>
+            </div>
+      
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Selanjutnya Baca Dzikir Ini</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>اَللّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ تَبَـارَكْتَ يَا ذَا الْجَلاَلِ وَاْلإِكْرَام
+                </strong> </h2>
+                <br>
+                <strong>Latin:</strong> Allohuma antassalam waminkassalam, tabarokta yaa dzal jalali wal ikram
+              </p>
+                <p><strong>Artinya:</strong> “Ya Allah, Engkaulah Pemberi keselamatan, dan dari-Mu keselamatan. Mahasuci Engkau, wahai Pemilik keagungan dan kemuliaan.” (HR. Muslim no. 591)
+                </p>
+              </div>
+            </div>
+      
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Kemudian Baca Dzikir Ini</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>لاَ إِلَهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيْكَ لَهُ، لَهُ المُلْكُ وَلَهُ الْحَمْدُ يُحْيِيْ وَيُمِيْتُ وَهُوَ حَيٌّ لاَ يَمُوْتُ، بِيَدِهِ الْخَيْرُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْر</strong></h2>
+                <br>
+                <strong>Latin:</strong> Lailahaillallah wahdahula syarikalah lahul mulku walahul hamdu yuhyi wayumitu wahuwa ala kulli syai-in qadir.
+                </p>
+                <p><strong>Artinya:</strong> “Tidak ada Tuhan selain Allah, tidak ada sekutu bagi-Nya, milik-Nya segala kekuasaan dan bagi-Nya segala pujian. Dia Mahakuasa atas segala sesuatu.”
+                </p>
+              </div>
+            </div>
+            
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Membaca Tasbih 33x</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>سُبْحَانَ الله
+                </strong></h2>
+                <br>
+                <strong>Latin:</strong> Subhaana Allah
+                </p>
+                <p><strong>Artinya:</strong>  "Maha Suci Allah."
+                </p>
+              </div>
+            </div>
+            
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Membaca Tahmid 33x</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>الْحَمْدُ للهِ </strong></h2>
+                <br>
+                <strong>Latin:</strong> Alhamdulillah
+              </p>
+                <p><strong>Artinya:</strong>  "Segala puji bagi Allah."
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Membaca Takbir 33x</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>اللَّهُ أَكْبَر
+                </strong></h2>
+                <br>
+                <strong>Latin:</strong> Allahu Akbar
+              </p>
+                <p><strong>Artinya:</strong>  "Allah Maha Besar."
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-header">
+                <h5>Membaca  Ayat Kursi
+                </h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-end"><strong>اَللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ
+                </strong></h2>
+                <br>
+                <strong>Latin:</strong> Alloohu laa ilaaha illaa huwal hayyul qoyyuum, laa ta’khudzuhuu sinatuw wa laa naum. Lahuu maa fis samaawaati wa maa fil ardh. Man dzal ladzii yasyfa’u ‘indahuu illaa biidznih. Ya’lamu maa baina aidiihim wa maa kholfahum wa laa yuhiithuuna bi syai’im min ‘ilmihii illaa bimaa syaa’. Wa si’a kursiyyuhus samaawaati wal ardlo wa laa ya’uuduhuu hifdhuhumaa wa huwal ‘aliyyul ‘adhiim.
+              </p>
+                <p><strong>Artinya:</strong> "Allah, tidak ada Tuhan melainkan Dia Yang Hidup kekal lagi terus menerus mengurus (makhluk-Nya); tidak mengantuk dan tidak tidur. Kepunyaan-Nya apa yang di langit dan di bumi. Siapa yang dapat memberi syafa’at di sisi Allah tanpa izin-Nya? Allah mengetahui apa-apa yang di hadapan mereka dan di belakang mereka, dan mereka tidak mengetahui apa-apa dari ilmu Allah melainkan apa yang Ia kehendaki. Kursi Allah meliputi langit dan bumi. Dan Allah tidak merasa berat memelihara keduanya, dan Allah Maha Tinggi lagi Maha Besar."</p>
+              </div>
+            </div>
+      <!-- Surat Al-Ikhlas -->
+      <div class="card mb-4">
+      <div class="card-header">
+      <h5>Membaca Surat Al-Ikhlas</h5>
+      </div>
+      <div class="card-body">
+      <!-- Ayat 1 -->
+      <h2 class="text-end"><strong>قُلْ هُوَ اللّٰهُ اَحَدٌۚ ۝١</strong></h2>
+      <br>
+      <p><strong>Latin:</strong> qul huwallâhu aḫad</p>
+      <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), 'Dialah Allah Yang Maha Esa.'</p>
+      <br>
+
+      <!-- Ayat 2 -->
+      <h2 class="text-end"><strong>اَللّٰهُ الصَّمَدُۚ ۝٢</strong></h2>
+      <br>
+      <p><strong>Latin:</strong> allâhush-shamad</p>
+      <p><strong>Artinya:</strong> "Allah tempat meminta segala sesuatu.</p>
+      <br>
+
+      <!-- Ayat 3 -->
+      <h2 class="text-end"><strong>لَمْ يَلِدْ وَلَمْ يُوْلَدْۙ ۝٣</strong></h2>
+      <br>
+      <p><strong>Latin:</strong> lam yalid wa lam yûlad</p>
+      <p><strong>Artinya:</strong> "Dia tidak beranak dan tidak pula diperanakkan.</p>
+      <br>
+
+      <!-- Ayat 4 -->
+      <h2 class="text-end"><strong>وَلَمْ يَكُنْ لَّهٗ كُفُوًا اَحَدٌࣖ ۝٤</strong></h2>
+      <br>
+      <p><strong>Latin:</strong> wa lam yakul lahû kufuwan aḫad</p>
+      <p><strong>Artinya:</strong> "serta tidak ada sesuatu pun yang setara dengan-Nya."</p>
+  </div>
+</div>
+                
+
+          <div class="card mb-4">
+              <div class="card-header">
+                  <h5>Membaca Surat Al-Falaq</h5>
+              </div>
+              <div class="card-body">
+                  <!-- Ayat 1 -->
+                  <h2 class="text-end"><strong>قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ ۝١</strong></h2>
+                  <br>
+                  <p><strong>Latin:</strong> qul a‘ûdzu birabbil-falaq</p>
+                  <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), 'Aku berlindung kepada Tuhan yang (menjaga) fajar (subuh),"</p>
+                  <br>
+
+                  <!-- Ayat 2 -->
+                  <h2 class="text-end"><strong>مِنْ شَرِّ مَا خَلَقَۙ ۝٢</strong></h2>
+                  <br>
+                  <p><strong>Latin:</strong> min syarri mâ khalaq</p>
+                  <p><strong>Artinya:</strong> "dari kejahatan (makhluk yang) Dia ciptakan,</p>
+                  <br>
+
+                  <!-- Ayat 3 -->
+                  <h2 class="text-end"><strong>وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ ۝٣</strong></h2>
+                  <br>
+                  <p><strong>Latin:</strong> wa min syarri ghâsiqin idzâ waqab</p>
+                  <p><strong>Artinya:</strong> "dari kejahatan malam apabila telah gelap gulita,</p>
+                  <br>
+
+                  <!-- Ayat 4 -->
+                  <h2 class="text-end"><strong>وَمِنْ شَرِّ النَّفّٰثٰتِ فِى الْعُقَدِۙ ۝٤</strong></h2>
+                  <br>
+                  <p><strong>Latin:</strong> wa min syarrin-naffâtsâti fil-‘uqad</p>
+                  <p><strong>Artinya:</strong> "dari kejahatan perempuan-perempuan (penyihir) yang meniup pada buhul-buhul (talinya),</p>
+                  <br>
+
+                  <!-- Ayat 5 -->
+                  <h2 class="text-end"><strong>وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَࣖ ۝٥</strong></h2>
+                  <br>
+                  <p><strong>Latin:</strong> wa min syarri ḫâsidin idzâ ḫasad</p>
+                  <p><strong>Artinya:</strong> "dan dari kejahatan orang yang dengki apabila dia dengki."</p>
+                  <br>
+
+              </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-header">
+                <h5>Membaca Surat An-Nas</h5>
+            </div>
+            <div class="card-body">
+                <!-- Ayat 1 -->
+                <h2 class="text-end"><strong>قُلْ اَعُوْذُ بِرَبِّ النَّاسِۙ ۝١</strong></h2>
+                <br>
+                <p><strong>Latin:</strong> qul a‘ûdzu birabbin-nâs</p>
+                <p><strong>Artinya:</strong> "Katakanlah (Nabi Muhammad), 'Aku berlindung kepada Tuhan manusia,'</p>
+                <br>
+
+                <!-- Ayat 2 -->
+                <h2 class="text-end"><strong>مَلِكِ النَّاسِۙ ۝٢</strong></h2>
+                <br>
+                <p><strong>Latin:</strong> malikin-nâs</p>
+                <p><strong>Artinya:</strong> "raja manusia,</p>
+                <br>
+
+                <!-- Ayat 3 -->
+                <h2 class="text-end"><strong>اِلٰهِ النَّاسِۙ ۝٣</strong></h2>
+                <br>
+                <p><strong>Latin:</strong> ilâhin-nâs</p>
+                <p><strong>Artinya:</strong> "sembahan manusia"</p>
+                <br>
+
+                <!-- Ayat 4 -->
+                <h2 class="text-end"><strong>مِنْ شَرِّ الْوَسْوَاسِ ەۙ الْخَنَّاسِۖ ۝٤</strong></h2>
+                <br>
+                <p><strong>Latin:</strong> min syarril-waswâsil-khannâs</p>
+                <p><strong>Artinya:</strong> "dari kejahatan (setan) pembisik yang bersembunyi"</p>
+                <br>
+
+                <!-- Ayat 5 -->
+                <h2 class="text-end"><strong>الَّذِيْ يُوَسْوِسُ فِيْ صُدُوْرِ النَّاسِۙ ۝٥</strong></h2>
+                <br>
+                <p><strong>Latin:</strong> alladzî yuwaswisu fî shudûrin-nâs</p>
+                <p><strong>Artinya:</strong> "yang membisikkan (kejahatan) ke dalam dada manusia,</p>
+                <br>
+
+                <!-- Ayat 6 -->
+                <h2 class="text-end"><strong>مِنَ الْجِنَّةِ وَالنَّاسِࣖ ۝٦</strong></h2>
+                <br>
+                <p><strong>Latin:</strong> minal-jinnati wan-nâs</p>
+                <p><strong>Artinya:</strong> "dari (golongan) jin dan manusia."</p>
+                <br>
+
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+
+ <!-- Bootstrap JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+     document.getElementById('darkModeToggle').onclick = function() {
+         document.body.classList.toggle('dark-mode');
+     }
+     function toggleSidebar() {
+         const sidebar = document.querySelector('.sidebar');
+         sidebar.classList.toggle('active');
+     }
+ </script>
+</body>
+</html>
